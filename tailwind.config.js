@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        ibmflexmono : ['IBM Plex Mono', 'monospace']
+      },
       width: {
         '128': '32rem',
         '160': '40rem'
