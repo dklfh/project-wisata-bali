@@ -1,6 +1,7 @@
 import React from 'react'
 import background from "../img/destinationbg.jpg"
 import Navbar from '../component/navbar'
+import Footer from '../component/footer'
 function destinationcont() {
   return (
     <div class="bg-black-bg font-ibmflexmono"> 
@@ -9,6 +10,8 @@ function destinationcont() {
         <Navbar/>
         <h1 class="text-white absolute w-160 text-center font-bold text-4xl font-ibmflexmono">Feel free and enjoy the beauty of paradise Island</h1>
         </section>
+
+        <Footer/>
     </div>
   )
 }

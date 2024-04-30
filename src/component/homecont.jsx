@@ -4,6 +4,7 @@ import uluwatu from "../img/uluwatu.jpg"
 import kuta from "../img/kuta.jpg"
 import banner from "../img/banner.png"
 import Navbar from './navbar'
+import Footer  from './footer'
 
 const homecont = () => {
   return (
@@ -99,6 +100,7 @@ const homecont = () => {
             <img src={banner} alt="banner"/>
         </div>
     </div>
+    <Footer/>
 </div>
   )
 }

@@ -7,24 +7,32 @@ import Gungwah from '../img/gungwah.png'
 import Sulih from '../img/sulih.png'
 import Devara from '../img/devara.png'
 import Navbar from './navbar'
-
+import Footer from './footer'
 
 const aboutcont = () => {
+    const Headercolor={
+        color: 'rgb(247, 170, 143)'
+    }
+    const Mask = {
+        maskImage: "linear-gradient(to top, rgba(255, 0, 0, 0) 0%, rgb(69, 211, 22) 12.5%, rgb(65, 22, 221) 87.5%, rgba(20, 225, 222, 0) 100%)"
+    }
+      
   return (
 
 <div class="bg-black-bg font-ibmflexmono">
 
-    <section class="bg-cover bg-center w-screen h-screen items-center justify-center flex" style={{ backgroundImage: `url(${background})` }} >
+    <section class="bg-cover bg-center w-screen h-screen items-center justify-center flex" style={{ backgroundImage: `url(${background})` }}  >
         <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
         <Navbar/>
-        <h1 class="text-white absolute w-160 text-center font-bold text-4xl font-ibmflexmono">WELCOME TO GOGOBALI WEBSITE</h1>
+        <h1 class="text-white relative w-160 text-center font-bold text-4xl font-ibmflexmono" >WELCOME TO GOGOBALI WEBSITE</h1>
     </section>
 
-    <div class="flex flex-col bg-transparent gap-16 px-8 py-4">
+    <div class="flex flex-col bg-transparent gap-16 px-8 py-4 relative">
+        
         <div class="items-center gap-5 justify-center flex flex-col" >
             <div class="flex flex-col gap-0 items-center relative">
                 <img src={logo} alt="Logo GoBali" />
-                <h1 class="font-bold text-2xl">What Is Gogobali ??</h1>
+                <h1 class="font-bold text-2xl text-white" style={Headercolor}>What Is Gogobali ??</h1>
             </div>
 
             <div class="flex flex-row gap-5 justify-center">
@@ -41,20 +49,19 @@ const aboutcont = () => {
                         vitae non!Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quis ullam, itaque
                         est et atque sint rem perferendis in fugiat perspiciatis repellendus inventore commodi expedita.
                         Eius facere autem assumenda quo?</p>
-                    <button
-                        class="px-5 py-2 bg-orange-400 text-white font-bold rounded-lg w-full transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">Read
-                        More</button>
+                        <button class="hover:brightness-110 hover:animate-pulse w-full font-bold py-3 px-6 rounded-lg bg-gradient-to-r from-orange-200 to-red-500 text-white text-xl">Read More</button>
                 </div>
 
                 <div>
-                    <img class="bg-cover w-3/4 rounded-lg"src={destination} alt=""/>
+                    <img class="bg-cover rounded-lg"src={destination} alt=""/>
                 </div>
 
             </div>
+        </div> 
 
-            <div class="items-center gap-5 justify-center flex flex-col">
+        <div class="items-center gap-5 justify-center flex flex-col relative">
                 <div class="items-center justify-center flex">
-                    <h1 class="font-bold text-2xl">Vision and Mision Gogobali</h1>
+                    <h1 class="font-bold text-2xl" style={Headercolor}>Vision and Mision Gogobali</h1>
                 </div>
 
                 <div class="flex items-center gap-3">
@@ -82,9 +89,23 @@ const aboutcont = () => {
                             aliquam. Odio repudiandae suscipit at eum.</p>
                     </div>
                 </div>
+        </div> 
+
+         <div class="items-center gap-5 justify-center flex flex-col">
+            <div class="items-center justify-center flex ">
+                <h1 class="font-bold text-2xl" style={Headercolor}>Meet Our Team</h1>
             </div>
-        </div>    
+
+            <div class="flex items-center justify-center gap-4 bg-transparent">
+                <img class="w-52 h-auto" src ={Gungwah}/>
+                <img class="w-52 h-auto" src ={Devara}/>
+                <img class="w-52 h-auto" src ={Yande}/>
+                <img class="w-52 h-auto" src ={Sulih}/>
+            </div>
+        </div>
     </div>
+
+    <Footer/>
 </div>
   )
 }
