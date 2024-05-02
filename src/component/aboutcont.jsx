@@ -22,7 +22,7 @@ const aboutcont = () => {
 <div class="bg-black-bg font-ibmflexmono">
 
     <section class="bg-cover bg-center w-screen h-screen items-center justify-center flex" style={{ backgroundImage: `url(${background})` }}  >
-        <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
+        <div class="absolute inset-0 bg-black opacity-30 h-screen" style={Mask}></div>
         <Navbar/>
         <h1 class="text-white relative w-160 text-center font-bold text-4xl font-ibmflexmono" >WELCOME TO GOGOBALI WEBSITE</h1>
     </section>
