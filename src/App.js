@@ -6,6 +6,8 @@ import Destination from './pages/destination'
 import Contact from './pages/contact'
 import Admin from './pages/admin'
 import Datawisata from './pages/datawisata'
+import Tes from './pages/Tes'
+
 
 
 const App = () => {
