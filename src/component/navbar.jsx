@@ -21,7 +21,7 @@ function navbar() {
                         <li class ="hover:underline underline-offset-4">
                             <Link to="/Contact">Contact Us</Link>
                         </li>
-                        <button class="px-5 py-2 bg-orange-400 text-white font-bold rounded-lg hover:drop-shadow-2xl"> Registration</button>
+                        
                     </ul>
                 </div>
             </div>
