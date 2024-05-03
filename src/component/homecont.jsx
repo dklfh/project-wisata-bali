@@ -8,19 +8,19 @@ import Footer from "./footer";
 
 const homecont = () => {
   return (
-    <div class="bg-black-bg font-ibmflexmono">
+    <div class="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <section
         class="bg-cover bg-center w-screen h-screen items-center justify-center flex"
         style={{ backgroundImage: `url(${background})` }}
       >
         <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
         <Navbar />
-        <h1 class="text-white absolute w-160 text-center font-bold text-4xl font-ibmflexmono">
+        <h1 class="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
           Feel free and enjoy the beauty of paradise Island
         </h1>
       </section>
       <div
-        class="px-9 py-8 flex flex-col gap-1"
+        class="px-4 py-8 flex flex-col gap-1 md:px-9"
         style={{
           maskImage: `linear-gradient(
         to top,
@@ -48,32 +48,35 @@ const homecont = () => {
               fill="white"
             />
           </svg>
-          <h1 class="text-white font-semibold ">See Destination In Bali</h1>
+          <h1 class="text-white font-semibold text-sm sm:text-lg">
+            See Destination In Bali
+          </h1>
         </div>
 
-        <div class="flex flex-row gap-3">
-          <button class="text-white px-5 py-2 bg-button-bg font-bold rounded-full">
+        <div class="flex flex-col md:flex-row gap-3">
+          <button class="text-white px-4 md:px-5 py-2 md:py-3 bg-button-bg font-bold rounded-full">
             Beach
           </button>
-          <button class="text-white px-5 py-2 bg-button-bg font-bold rounded-full">
+          <button class="text-white px-4 md:px-5 py-2 md:py-3 bg-button-bg font-bold rounded-full">
             Mountain
           </button>
-          <button class="text-white px-5 py-2 bg-button-bg font-bold rounded-full">
+          <button class="text-white px-4 md:px-5 py-2 md:py-3 bg-button-bg font-bold rounded-full">
             Club
           </button>
-          <button class="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-5 py-2">
-            <span class="relative z-10 text-white group-hover:text-white text-xl duration-500">
+          <button class="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
+            <span class="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
               See All Destination
             </span>
-            <span class="absolute w-full h-full bg-button-bg -left-64 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-            <span class="absolute w-full h-full bg-button-bg -right-64 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+            <span class="absolute w-full h-full bg-button-bg -left-32 md:-left-64 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+            <span class="absolute w-full h-full bg-button-bg -right-32 md:-right-64 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
           </button>
         </div>
 
-        <div class="flex flex-row items-center gap-4 p-4 h-auto">
-          <div class="flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
+        {/* card destination */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 md:justify-items-center">
+          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
             <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu"></img>
+              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
               <h1 class="text-white font-semibold leading-6 text-lg">
                 Uluwatu Beach
               </h1>
@@ -91,9 +94,9 @@ const homecont = () => {
               View More
             </button>
           </div>
-          <div class="flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
+          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
             <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu"></img>
+              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
               <h1 class="text-white font-semibold leading-6 text-lg">
                 Uluwatu Beach
               </h1>
@@ -111,9 +114,9 @@ const homecont = () => {
               View More
             </button>
           </div>
-          <div class="flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
+          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
             <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu"></img>
+              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
               <h1 class="text-white font-semibold leading-6 text-lg">
                 Uluwatu Beach
               </h1>
@@ -131,9 +134,9 @@ const homecont = () => {
               View More
             </button>
           </div>
-          <div class="flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
+          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
             <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu"></img>
+              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
               <h1 class="text-white font-semibold leading-6 text-lg">
                 Uluwatu Beach
               </h1>
@@ -153,14 +156,14 @@ const homecont = () => {
           </div>
         </div>
 
-        <div class="flex flex-row gap-6 items-start w-screen">
+        <div class="flex flex-row gap-6 justify-center">
           <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
           <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
           <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
           <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
         </div>
 
-        <div class="items-center justify-center  px-24 py-8 flex flex-col gap-4">
+        <div class="items-center justify-center  px-4 py-8 flex flex-col gap-4 md:px-12">
           <img src={banner} alt="banner" />
         </div>
       </div>
