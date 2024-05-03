@@ -9,7 +9,6 @@ import Datawisata from './pages/datawisata'
 import Tes from './pages/Tes'
 
 
-
 const App = () => {
     return(
       <Router>
