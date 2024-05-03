@@ -13,16 +13,13 @@ const aboutcont = () => {
     const Headercolor={
         color: 'rgb(247, 170, 143)'
     }
-    const Mask = {
-        maskImage: "linear-gradient(to top, rgba(255, 0, 0, 0) 0%, rgb(69, 211, 22) 12.5%, rgb(65, 22, 221) 87.5%, rgba(20, 225, 222, 0) 100%)"
-    }
       
   return (
 
 <div class="bg-black-bg font-ibmflexmono">
 
     <section class="bg-cover bg-center w-screen h-screen items-center justify-center flex" style={{ backgroundImage: `url(${background})` }}  >
-        <div class="absolute inset-0 bg-black opacity-30 h-screen" style={Mask}></div>
+        <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
         <Navbar/>
         <h1 class="text-white relative w-160 text-center font-bold text-4xl font-ibmflexmono" >WELCOME TO GOGOBALI WEBSITE</h1>
     </section>
@@ -49,7 +46,7 @@ const aboutcont = () => {
                         vitae non!Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quis ullam, itaque
                         est et atque sint rem perferendis in fugiat perspiciatis repellendus inventore commodi expedita.
                         Eius facere autem assumenda quo?</p>
-                        <button class="hover:brightness-110 hover:animate-pulse w-full font-bold py-3 px-6 rounded-lg bg-gradient-to-r from-orange-200 to-red-500 text-white text-xl">Read More</button>
+                        <button class="hover:brightness-110 hover:animate-pulse w-full font-bold py-3 px-6 rounded-lg bg-gradient-to-r bg-button-bg text-white text-xl">Read More</button>
                 </div>
 
                 <div>
