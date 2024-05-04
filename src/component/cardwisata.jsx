@@ -1,25 +1,37 @@
 import uluwatu from "../img/uluwatu.jpg";
-function cardwisata() {
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function Cardwisata() {
+  const [wisata, setWisata] = useState([]);
+
+  useEffect(() => {
+    const fetchAllWisata = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800");
+        setWisata(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllWisata();
+  }, []);
+
   return (
-    <div class="flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
-      <div class="flex flex-col gap-0 items-center">
-        <img src={uluwatu} alt="uluwatu"></img>
-        <h1 class="text-white font-semibold leading-6 text-lg">
-          Uluwatu Beach
-        </h1>
-        <p class="text-orange-500 text-sm font-medium">
-          Pecatu, Kabupaten Badung
-        </p>
-      </div>
-      <p class="text-xs text-white font-normal text-justify">
-        Uluwatu Beach is a stunning coastal destination located on the southern
-        tip of Bali, Indonesia. Known for its dramatic cliffs, pristine white
-        sand, and crystal-clear turquoise waters, it's a haven for
-      </p>
-      <button class="text-white px-5 py-2 bg-button-bg font-bold rounded">
-        View More
-      </button>
+    <div class="grid grid-cols-4 gap-2">
+        {wisata.map((wisata) => (
+          <div class="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-black max-w-md min-h-96 wisata mb-10 py-25">
+          <div class="flex flex-col gap-0 items-center wisata">
+          <div key={wisata.id} className="wisata">
+            <img src={uluwatu} alt="uluwatu" class="mb-3"></img>
+            <h1 class="text-black font-semibold leading-6 text-lg">{wisata.title} </h1>
+            <p class="text-orange-500 text-sm font-medium">Pecatu, Kabupaten Badung</p>
+            <p class="text-xs text-black font-normal text-justify">{wisata.desc}</p>
+          </div>
+          </div>
+          </div>
+        ))}
     </div>
-  );
+  )
 }
-export default cardwisata;
+export default Cardwisata;
