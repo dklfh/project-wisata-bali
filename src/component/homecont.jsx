@@ -3,7 +3,7 @@ import background from "../img/home-background.jpg";
 import uluwatu from "../img/uluwatu.jpg";
 import kuta from "../img/kuta.jpg";
 import banner from "../img/banner.png";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import Footer from "./footer";
 
 const homecont = () => {
@@ -15,7 +15,7 @@ const homecont = () => {
       >
         <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
         <Navbar />
-        <h1 class="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
+        <h1 class="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
           Feel free and enjoy the beauty of paradise Island
         </h1>
       </section>
@@ -67,8 +67,8 @@ const homecont = () => {
             <span class="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
               See All Destination
             </span>
-            <span class="absolute w-full h-full bg-button-bg -left-32 md:-left-64 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-            <span class="absolute w-full h-full bg-button-bg -right-32 md:-right-64 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+            <span class="absolute w-full h-full hidden bg-button-bg -left-32 md:-left-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+            <span class="absolute w-full h-full hidden bg-button-bg -right-32 md:-right-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
           </button>
         </div>
 

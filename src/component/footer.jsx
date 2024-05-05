@@ -29,8 +29,8 @@ function footer() {
         </div>
       </div>
 
-      <div class="flex justify-between w-full p-3 items-center">
-        <img src={Logo} alt="" />
+      <div class="flex justify-between w-full p-3 items-center flex-col gap-y-5 sm:flex-row sm:gap-y-0">
+        <img src={Logo} alt=""/>
         <p class="text-white text-sm">© Copyright By GogoBali Team</p>
         <div class="flex gap-3">
           <div class="flex items-center gap-3">
