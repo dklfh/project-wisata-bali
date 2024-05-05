@@ -1,8 +1,10 @@
-import React from 'react'
 import background from "../img/destinationbg.jpg"
-import Navbar from '../component/Navbar'
-import Footer from '../component/footer'
-function destinationcont() {
+import Navbar from './navbar'
+import Footer from './footer'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function Destinationcont() {
   return (
     <div class="bg-black-bg font-ibmflexmono overflow-x-hidden"> 
       <section class="bg-cover bg-center w-screen h-screen items-center justify-center flex" style={{ backgroundImage: `url(${background})` }}>
@@ -16,4 +18,4 @@ function destinationcont() {
   )
 }
 
-export default destinationcont
+export default Destinationcont

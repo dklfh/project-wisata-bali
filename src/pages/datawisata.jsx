@@ -57,10 +57,7 @@ function DataWisata() {
           <div className="flex flex-col mt-24">
             <h1 className="font-bold">Preview Data</h1>
 
-            <div className="flex flex-row items-center gap-4 p-4 h-auto">
-              <Cardwisata />
-              <Cardwisata />
-              <Cardwisata />
+            <div className="flex flex-auto items-center gap-4 p-4  h-auto">
               <Cardwisata />
             </div>
           </div>

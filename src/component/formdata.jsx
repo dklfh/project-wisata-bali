@@ -1,4 +1,36 @@
-function formdata() {
+import axios from "axios";
+import React from "react";
+import { useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+
+function Formdata() {
+  const [wisata, setWisata] = useState({
+    title: "",
+    desc: "",
+    cover: "",
+  });
+
+  const [error,setError] = useState(false)
+  const navigate = useNavigate();
+
+
+  const handleChange = (e) => {
+    setWisata((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:8800/", wisata);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      setError(true)
+    }
+  };
+
+  console.log(wisata)
+
   return (
     <div class="">
       <section class="rounded-md p-2 bg-white">
@@ -19,7 +51,8 @@ function formdata() {
                       placeholder="Title"
                       type="text"
                       class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      name="user_name"
+                      name="title"
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -33,7 +66,8 @@ function formdata() {
                       placeholder="Location"
                       type="email"
                       class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      name="email"
+                      name="location"
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -45,11 +79,12 @@ function formdata() {
                     </label>
                   </div>
                   <div class="mt-2">
-                    <input
-                      placeholder="Description"
-                      type="password"
+                  <input
+                      placeholder="Location"
+                      type="desc"
                       class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      name="password"
+                      name="desc"
+                      onChange={handleChange}
                     />
                   </div>
                   <div class="flex items-center justify-between mt-3">
@@ -61,17 +96,19 @@ function formdata() {
                     <input
                       class="file-input w-full max-w-xs"
                       type="file"
-                      name="avatar"
+                      name="cover"
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
                 <div>
-                  <button
+                  <button onClick={handleClick}
                     class="inline-flex w-full items-center justify-center rounded-md bg-button-bg px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-orange-3x00"
                     type="button"
                   >
                     Add Data
                   </button>
+                  {error && "Something went wrong!"}
                 </div>
               </div>
             </form>
@@ -81,4 +118,4 @@ function formdata() {
     </div>
   );
 }
-export default formdata;
+export default Formdata;
