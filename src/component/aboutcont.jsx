@@ -10,7 +10,7 @@ import Yande from '../img/yande.png'
 import Gungwah from '../img/gungwah.png'
 import Sulih from '../img/sulih.png'
 import Devara from '../img/devara.png'
-import Navbar from './Navbar'
+import Navbar from './navbar'
 import Footer from './footer'
 
 const aboutcont = () => {
@@ -18,7 +18,7 @@ const aboutcont = () => {
         color: 'rgb(247, 170, 143)'
     }
       
-  return (
+    return (
 
 <div class="bg-black-bg font-ibmflexmono overflow-x-hidden">
     <section class="bg-cover bg-center w-screen h-screen items-center justify-center flex relative" style={{ backgroundImage: `url(${background})` }}>
