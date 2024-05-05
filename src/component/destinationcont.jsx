@@ -1,5 +1,5 @@
 import background from "../img/destinationbg.jpg"
-import Navbar from './navbar'
+import Navbar from './Navbar'
 import Footer from './footer'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
