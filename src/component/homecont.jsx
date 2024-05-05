@@ -3,7 +3,7 @@ import background from "../img/home-background.jpg";
 import uluwatu from "../img/uluwatu.jpg";
 import kuta from "../img/kuta.jpg";
 import banner from "../img/banner.png";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 import Footer from "./footer";
 
 const homecont = () => {
