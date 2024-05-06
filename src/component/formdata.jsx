@@ -8,6 +8,7 @@ function Formdata() {
     title: "",
     desc: "",
     cover: "",
+    lokasi:"",
   });
 
   const [error,setError] = useState(false)
@@ -29,6 +30,7 @@ function Formdata() {
     }
   };
 
+
   console.log(wisata)
 
   return (
@@ -48,9 +50,9 @@ function Formdata() {
                   </label>
                   <div class="mt-2">
                     <input
-                      placeholder="Title"
-                      type="text"
                       class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      type="text"
+                      placeholder="wisata title"
                       name="title"
                       onChange={handleChange}
                     />
@@ -62,11 +64,11 @@ function Formdata() {
                     Add Location
                   </label>
                   <div class="mt-2">
-                    <input
-                      placeholder="Location"
-                      type="email"
+                  <input
                       class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      name="location"
+                      type="text"
+                      placeholder="wisata lokasi"
+                      name="lokasi"
                       onChange={handleChange}
                     />
                   </div>
@@ -80,9 +82,9 @@ function Formdata() {
                   </div>
                   <div class="mt-2">
                   <input
-                      placeholder="Location"
-                      type="desc"
                       class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      type="text"
+                      placeholder="wisata desc"
                       name="desc"
                       onChange={handleChange}
                     />
@@ -96,6 +98,7 @@ function Formdata() {
                     <input
                       class="file-input w-full max-w-xs"
                       type="file"
+                      placeholder="wisata cover"
                       name="cover"
                       onChange={handleChange}
                     />

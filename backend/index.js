@@ -26,12 +26,14 @@ var db = mysql.createConnection({
   });
 
   app.post("/", (req, res) => {
-    const q = "INSERT INTO wisata(`title`, `desc`, `cover`) VALUES (?)";
+    const q = "INSERT INTO wisata(`title`, `desc`, `cover`,`lokasi`) VALUES (?)";
   
     const values = [
       req.body.title,
       req.body.desc,
       req.body.cover,
+      req.body.lokasi,
+
     ];
   
     db.query(q, [values], (err, data) => {
