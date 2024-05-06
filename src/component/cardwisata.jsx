@@ -20,12 +20,12 @@ function Cardwisata() {
   return (
     <div class="grid grid-cols-4 gap-2">
         {wisata.map((wisata) => (
-          <div class="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-black max-w-md min-h-96 wisata mb-10 py-25">
+          <div class="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96 wisata mb-10 py-25">
           <div class="flex flex-col gap-0 items-center wisata">
           <div key={wisata.id} className="wisata">
             <img src={uluwatu} alt="uluwatu" class="mb-3"></img>
             <h1 class="text-black font-semibold leading-6 text-lg">{wisata.title} </h1>
-            <p class="text-orange-500 text-sm font-medium">{wisata.lokasi}</p>
+            <p class="text-orange-500 text-sm font-medium">Pecatu, Kabupaten Badung</p>
             <p class="text-xs text-black font-normal text-justify">{wisata.desc}</p>
           </div>
           </div>
