@@ -20,7 +20,7 @@ function AdminCont() {
   }, []);
 
   return (
-    <section className="font-ibmflexmono flex flex-col h-screen bg-gray-100">
+    <section className="font-ibmflexmono flex flex-col  bg-black-bg *">
       <AdminNav title="GogoBali Admin"/>
 
       <div className="flex-1 flex flex-wrap">
