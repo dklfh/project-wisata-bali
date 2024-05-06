@@ -55,22 +55,22 @@ function Navbar() {
                 </div>
                 <div className="hidden md:flex items-center">
                     <ul className="flex text-white justify-between gap-7 items-center">
-                        <li className="hover:underline underline-offset-4 text-lg lg:text-xl">
+                        <li className="hover:underline underline-offset-4 text-lg">
                             <Link to="/">Home</Link>
                         </li>
-                        <li className="hover:underline underline-offset-4 text-lg lg:text-xl">
+                        <li className="hover:underline underline-offset-4 text-lg">
                             <Link to="/about">About</Link>
                         </li>
-                        <li className="hover:underline underline-offset-4 text-lg lg:text-xl">
+                        <li className="hover:underline underline-offset-4 text-lg">
                             <Link to="/Destination">Destination</Link>
                         </li>
-                        <li className="hover:underline underline-offset-4 text-lg lg:text-xl">
+                        <li className="hover:underline underline-offset-4 text-lg">
                             <Link to="/Contact">Contact Us</Link>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div ref={menuRef} className={`fixed top-0 left-0 w-full h-10vh bg-button-bg opacity-80 z-10 py-7 flex justify-center items-center transition-all duration-500 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+            <div ref={menuRef} className={`fixed top-0 left-0 w-full h-10vh bg-button-bg opacity-80 z-10 py-7 flex justify-center items-center transition-all duration-200 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
                 <ul className="flex flex-col text-white gap-5 text-center">
                     <li className="hover:underline underline-offset-4 text-lg">
                         <Link to="/" onClick={handleMenuToggle}>Home</Link>

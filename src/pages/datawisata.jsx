@@ -16,13 +16,13 @@ function DataWisata() {
   };
 
   return (
-    <section className="font-ibmflexmono flex flex-col h-screen bg-gray-100">
+    <section className="font-ibmflexmono flex flex-col  bg-black-bg ">
       <AdminNav title="Data Wisata" />
 
       <div className="flex-1 flex flex-wrap">
         <SidebarAdmin />
 
-        <div className="flex-1 p-4 w-full md:w-1/2 gap-10 flex-col">
+        <div className="flex-1 p-8 w-full md:w-1/2 gap-10 flex-col">
           <div className="relative max-w-md w-full">
             <div className="absolute top-1 left-2 inline-flex items-center p-2">
               <i className="fas fa-search text-gray-400"></i>
@@ -54,8 +54,8 @@ function DataWisata() {
             </div>
           </div>
 
-          <div className="flex flex-col mt-24">
-            <h1 className="font-bold">Preview Data</h1>
+          <div className="flex flex-col mt-10">
+            <h1 className="font-bold text-xl ml-5 text-white">Preview Data</h1>
 
             <div className="flex flex-auto items-center gap-4 p-4  h-auto">
               <Cardwisata />

@@ -5,14 +5,14 @@ import Sidebar from "../component/sidebarAdmin"
 
 const AdminCont = () => {
   return (
-    <section className="font-ibmflexmono flex flex-col h-screen bg-gray-100">
+    <section className="font-ibmflexmono flex flex-col h-screen bg-black-bg">
       <AdminNav title="GogoBali Admin"/>
 
       <div className="flex-1 flex flex-wrap">
         
         <Sidebar/>
 
-        <div className="flex-1 p-4 w-full md:w-1/2">
+        <div className="flex-1 p-8 w-full md:w-1/2">
 
           <div className="relative max-w-md w-full">
             <div className="absolute top-1 left-2 inline-flex items-center p-2">
