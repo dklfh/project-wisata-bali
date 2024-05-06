@@ -24,8 +24,8 @@ function Cardwisata() {
           <div class="flex flex-col gap-0 items-center wisata">
           <div key={wisata.id} className="wisata">
             <img src={uluwatu} alt="uluwatu" class="mb-3"></img>
-            <h1 class="text-white text-center font-semibold leading-6 text-lg">{wisata.title} </h1>
-            <p class="my-1 text-orange-500 text-sm text-center font-medium">Pecatu, Kabupaten Badung</p>
+            <h1 class="text-white font-semibold leading-6 text-lg">{wisata.title} </h1>
+            <p class="my-1 text-orange-500 text-sm font-medium">Pecatu, Kabupaten Badung</p>
             <p class="text-xs text-white font-normal text-justify">{wisata.desc}</p>
           </div>
           </div>
