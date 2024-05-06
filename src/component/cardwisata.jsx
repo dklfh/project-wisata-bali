@@ -18,7 +18,7 @@ function Cardwisata() {
   }, []);
 
   return (
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 md:justify-items-center">
+    <div class="grid grid-cols-4 gap-2">
         {wisata.map((wisata) => (
           <div class="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96 wisata mb-10 py-25">
           <div class="flex flex-col gap-0 items-center wisata">
