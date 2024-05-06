@@ -5,6 +5,7 @@ import kuta from "../img/kuta.jpg";
 import banner from "../img/banner.png";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import Cardwisata from "./cardwisata";
 
 const homecont = () => {
   return (
@@ -73,87 +74,8 @@ const homecont = () => {
         </div>
 
         {/* card destination */}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 md:justify-items-center">
-          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
-            <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
-              <h1 class="text-white font-semibold leading-6 text-lg">
-                Uluwatu Beach
-              </h1>
-              <p class="text-orange-500 text-sm font-medium">
-                Pecatu, Kabupaten Badung
-              </p>
-            </div>
-            <p class="text-xs text-white font-normal text-justify">
-              Uluwatu Beach is a stunning coastal destination located on the
-              southern tip of Bali, Indonesia. Known for its dramatic cliffs,
-              pristine white sand, and crystal-clear turquoise waters, it's a
-              haven for
-            </p>
-            <button class="text-white px-5 py-2 bg-button-bg font-bold rounded">
-              View More
-            </button>
-          </div>
-          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
-            <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
-              <h1 class="text-white font-semibold leading-6 text-lg">
-                Uluwatu Beach
-              </h1>
-              <p class="text-orange-500 text-sm font-medium">
-                Pecatu, Kabupaten Badung
-              </p>
-            </div>
-            <p class="text-xs text-white font-normal text-justify">
-              Uluwatu Beach is a stunning coastal destination located on the
-              southern tip of Bali, Indonesia. Known for its dramatic cliffs,
-              pristine white sand, and crystal-clear turquoise waters, it's a
-              haven for
-            </p>
-            <button class="text-white px-5 py-2 bg-button-bg font-bold rounded">
-              View More
-            </button>
-          </div>
-          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
-            <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
-              <h1 class="text-white font-semibold leading-6 text-lg">
-                Uluwatu Beach
-              </h1>
-              <p class="text-orange-500 text-sm font-medium">
-                Pecatu, Kabupaten Badung
-              </p>
-            </div>
-            <p class="text-xs text-white font-normal text-justify">
-              Uluwatu Beach is a stunning coastal destination located on the
-              southern tip of Bali, Indonesia. Known for its dramatic cliffs,
-              pristine white sand, and crystal-clear turquoise waters, it's a
-              haven for
-            </p>
-            <button class="text-white px-5 py-2 bg-button-bg font-bold rounded">
-              View More
-            </button>
-          </div>
-          <div class="flex flex-col items-center mx-auto gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96">
-            <div class="flex flex-col gap-0 items-center">
-              <img src={uluwatu} alt="uluwatu" class="w-full h-auto mb-3"></img>
-              <h1 class="text-white font-semibold leading-6 text-lg">
-                Uluwatu Beach
-              </h1>
-              <p class="text-orange-500 text-sm font-medium">
-                Pecatu, Kabupaten Badung
-              </p>
-            </div>
-            <p class="text-xs text-white font-normal text-justify">
-              Uluwatu Beach is a stunning coastal destination located on the
-              southern tip of Bali, Indonesia. Known for its dramatic cliffs,
-              pristine white sand, and crystal-clear turquoise waters, it's a
-              haven for
-            </p>
-            <button class="text-white px-5 py-2 bg-button-bg font-bold rounded">
-              View More
-            </button>
-          </div>
+        <div className="flex flex-auto items-center gap-4 p-4  h-auto">
+          <Cardwisata />
         </div>
 
         <div class="flex flex-row gap-6 justify-center">
