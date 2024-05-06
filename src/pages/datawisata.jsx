@@ -39,6 +39,9 @@ function DataWisata() {
               <button className="text-white px-5 py-2 bg-button-bg font-bold rounded-full" onClick={handleAddData}>
                 Add Data
               </button>
+              <button className="text-white px-5 py-2 bg-button-bg font-bold rounded-full" onClick={handleAddData}>
+                Delete Data
+              </button>
             </div>
 
             <div className="flex flex-row gap-3 mt-8 justify-end">

@@ -1,8 +1,9 @@
 import background from "../img/destinationbg.jpg"
-import Navbar from './Navbar'
+import Navbar from './navbar'
 import Footer from './footer'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Cardwisata from './cardwisata'
 
 function Destinationcont() {
   return (
@@ -13,6 +14,9 @@ function Destinationcont() {
         <h1 class="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">Feel free and enjoy the beauty of paradise Island</h1>
         </section>
 
+        <div className="flex flex-auto items-center gap-4 p-4  h-auto">
+              <Cardwisata />
+            </div>
         <Footer/>
     </div>
   )
