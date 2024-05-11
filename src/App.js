@@ -7,7 +7,7 @@ import Contact from './pages/contact'
 import Admin from './pages/admin'
 import Datawisata from './pages/datawisata'
 import Tes from './pages/Tes'
-
+import Viewmore from './component/viewMore'
 
 const App = () => {
     return(
@@ -20,6 +20,7 @@ const App = () => {
           <Route path='/Contact' element ={<Contact/>}></Route>
           <Route path='/Admin' element ={<Admin/>}></Route>
           <Route path='/DataWisata' element ={<Datawisata/>}></Route>
+          <Route path='/view' element ={<Viewmore/>}></Route>
         </Routes>
       </Router>
     )
