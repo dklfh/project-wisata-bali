@@ -1,37 +1,22 @@
-import uluwatu from "../img/uluwatu.jpg";
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-function Cardwisata() {
-  const [wisata, setWisata] = useState([]);
-
-  useEffect(() => {
-    const fetchAllWisata = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800");
-        setWisata(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchAllWisata();
-  }, []);
-
+// Cardwisata.jsx
+import React from "react";
+import Uluwatu from "../img/uluwatu.jpg"
+function Cardwisata({ wisata }) {
   return (
-    <div class="grid grid-cols-4 gap-2">
-        {wisata.map((wisata) => (
-          <div class="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96 wisata mb-10 py-25">
-          <div class="flex flex-col gap-0 items-center wisata">
-          <div key={wisata.id} className="wisata">
-            <img src={uluwatu} alt="uluwatu" class="mb-3"></img>
-            <h1 class="text-white font-semibold leading-6 text-lg">{wisata.title} </h1>
-            <p class="text-orange-500 text-sm font-medium">{wisata.lokasi}</p>
-            <p class="text-xs text-white font-normal text-justify">{wisata.desc}</p>
-          </div>
-          </div>
-          </div>
-        ))}
+    <div className="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96 mb-10 py-25">
+      <div className="flex flex-col gap-2 items-center wisata">
+        <img src={Uluwatu} alt={wisata.title} className="mb-3" />
+        <h1 className="text-white font-semibold leading-6 text-lg">
+          {wisata.title}
+        </h1>
+        <p className="text-orange-500 text-sm font-medium">{wisata.lokasi}</p>
+        <p className="text-xs text-white font-normal text-justify">
+          {wisata.desc}
+        </p>
+        <button className="p-2 rounded-lg bg-button-bg text-white">View More</button>
+      </div>
     </div>
-  )
+  );
 }
+
 export default Cardwisata;
