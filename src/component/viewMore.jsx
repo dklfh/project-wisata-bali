@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Uluwatu from "../img/uluwatu.jpg";
+import { useParams } from 'react-router-dom';
+import { getDetailWisata } from '../services/productservices';
 
-const viewMore = () => {
-  return (
+const ViewMore = () => {
+    const { id } = useParams();
+    const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        getDetailWisata(id, (data) => {
+            setProduct(data);
+        });
+    }, [id]);
+    console.log(product);
+    return (
     <div class="bg-black-bg">
         <nav className="px-7 py-5 w-full box-border z-10 bg-black-bg bg-opacity-90">
             <button>
@@ -14,7 +25,7 @@ const viewMore = () => {
                 <div class="border border-white rounded-xl">
                     <img src={Uluwatu} alt="Uluwatu" class="w-full h-40 rounded-t-xl object-cover object-custom-position" style={{ objectPosition: "50% 75%" }}/>
                     <div class="p-7 py-4">
-                        <h1 class="text-white font-bold text-2xl">Uluwatu Beach</h1>
+                        <h1 class="text-white font-bold text-2xl">Uluwatu Beach : {id}</h1>
                         <h2 class="text-white text-md py-2">Description :</h2>
                         <p class="text-sm text-gray-400">Uluwatu Beach, located in the southern part of Bali, Indonesia, is renowned for its stunning natural beauty and iconic limestone cliffs overlooking the Indian Ocean. The beach is nestled amidst rugged cliffs and offers breathtaking panoramic views of the ocean and coastline. Uluwatu Beach is a popular destination for surfers, known for its powerful waves that attract experienced surfers from around the world. </p>
                     </div>
@@ -120,4 +131,4 @@ const viewMore = () => {
   )
 }
 
-export default viewMore
+export default ViewMore
