@@ -29,6 +29,7 @@ var db = mysql.createConnection({
     const q = "INSERT INTO wisata(`title`, `desc`, `cover`,`lokasi`) VALUES (?)";
   
     const values = [
+      req.body.id,
       req.body.title,
       req.body.desc,
       req.body.cover,
