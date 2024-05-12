@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Uluwatu from "../img/uluwatu.jpg";
+import Starrating from './starrating';
 
 const viewMore = () => {
   return (
@@ -64,6 +65,7 @@ const viewMore = () => {
                     </div>
                 </div>
             </div>
+
             <div class="w-1/2">
                 <div id="default-carousel" class="relative w-full" data-carousel="slide">
                     
@@ -113,6 +115,39 @@ const viewMore = () => {
                             <span class="sr-only">Next</span>
                         </span>
                     </button>
+                </div>
+
+                <div class="border border-white rounded-xl mt-10 px-7 py-4 flex flex-col text-white">
+                    <div class="flex justify-between">
+                        <h1>30 Comment</h1>
+                        <div class="flex">
+                            <h2 class="text-gray-400">Short by</h2>
+                            <button class="border border-white flex justify-between w-20 items-center px-3 text-sm ml-3">Rating<svg xmlns="http://www.w3.org/2000/svg" width="0.7em" height="0.7em" viewBox="0 0 2048 2048"><path fill="white" d="m1965 1101l-941 941l-941-941l90-90l787 787V0h128v1798l787-787z"/></svg></button>
+                        </div>
+                    </div>
+                    <div class="flex mt-6 justify-between">
+                        <img src="" alt="foto profil" class="w-10 h-10 rounded-full"/>
+                        <form action="" class="flex flex-col items-end">
+                            <textarea id="comment" class="p-3 rounded-xl text-black-bg" rows={4} style={{ resize: 'none' }} cols={50} placeholder="Tulis komentar Anda di sini..." required/>
+                            <div class="flex my-3" id="star">
+                                <Starrating />
+                            </div>
+                            <button class="bg-button-bg text-white font-bold px-7 py-2 rounded-xl">Comment</button>
+                        </form>
+                    </div>
+                    <div class="border border-white rounded-xl px-7 py-4 flex flex-col mt-7">
+                        <div class="flex">
+                            <img src="" alt="foto profil" class="w-5 h-5 rounded-full"/>
+                            <div class="ml-3">
+                                <h1 class="font-bold">Adam Smith</h1>
+                                <h2 class="text-gray-400 text-sm">April 27,2023</h2>
+                            </div>
+                        </div>
+                        <h1 class="my-4">A great experience, i hope to stay here again.</h1>
+                        <div class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
