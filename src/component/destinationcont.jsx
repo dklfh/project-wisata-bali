@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useState, useEffect } from "react";
 import Cardwisata from "./cardwisata";
 import Searchbar from "./searchbar";
 import background from "../img/destinationbg.jpg";
@@ -31,10 +31,16 @@ function Destinationcont() {
     setFilteredWisata(filteredData);
   };
 
-  const handleClose = () => {
-    setFilteredWisata(wisataData); // Atur ulang filtered data menjadi data awal
+  const handleClose = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800");
+      setWisataData(res.data);
+      setFilteredWisata(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
-  
+
   return (
     <div className="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <section
