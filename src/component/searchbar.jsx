@@ -60,20 +60,23 @@ function Searchbar({ onSearch, onClose }) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="50px"
-            height="50px"
-            viewBox="0 0 24 24"
-            class="stroke-indigo-400 fill-none group-hover:fill-red-800 group-active:stroke-indigo-200 group-active:fill-red-600 group-active:duration-0 duration-300"
+            width="3em"
+            height="3em"
+            viewBox="0 0 36 36"
           >
             <path
-              d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-              stroke-width="1.5"
+              fill="#F6995C"
+              d="m19.61 18l4.86-4.86a1 1 0 0 0-1.41-1.41l-4.86 4.81l-4.89-4.89a1 1 0 0 0-1.41 1.41L16.78 18L12 22.72a1 1 0 1 0 1.41 1.41l4.77-4.77l4.74 4.74a1 1 0 0 0 1.41-1.41Z"
+              className="clr-i-outline clr-i-outline-path-1"
             ></path>
-            <path d="M8 12H16" stroke-width="1.5"></path>
-            <path d="M12 16V8" stroke-width="1.5"></path>
+            <path
+              fill="#F6995C"
+              d="M18 34a16 16 0 1 1 16-16a16 16 0 0 1-16 16m0-30a14 14 0 1 0 14 14A14 14 0 0 0 18 4"
+              className="clr-i-outline clr-i-outline-path-2"
+            ></path>
+            <path fill="none" d="M0 0h36v36H0z"></path>
           </svg>
         </button>
-
       </form>
     </div>
   );
