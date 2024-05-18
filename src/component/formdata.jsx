@@ -35,13 +35,15 @@ function Formdata() {
 
   return (
     <div class="">
-      <section class="rounded-md p-2 bg-white">
-        <div class="flex items-center justify-center my-3">
-          <div class="xl:mx-auto shadow-md p-4 xl:w-full xl:max-w-sm 2xl:max-w-md">
-            <div class="mb-2"></div>
+      <section class="rounded-md p-2 bg-transparent ">
+        <div class="flex items-center justify-center py-10 text-white ">
+          <div class="xl:mx-auto shadow-md p-4 xl:w-full xl:max-w-sm 2xl:max-w-md border-2 rounded-xl">
+            <div class="mb-2">
             <h2 class="text-2xl font-bold leading-tight">
               Add Data Wisata
             </h2>
+            </div>
+            
             <form class="mt-5">
               <div class="space-y-4">
                 <div>
@@ -122,3 +124,4 @@ function Formdata() {
   );
 }
 export default Formdata;
+

@@ -7,7 +7,7 @@ import Footer from "./footer";
 import Cardwisata from "./cardwisata";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { getProduct } from "../services/productservices";
+import Filterbtn from "./filteredbutton";
 
 function Homecont () {
   const [wisataData, setWisataData] = useState([]);
@@ -40,29 +40,26 @@ function Homecont () {
   };
   return (
     <div class="bg-black-bg font-ibmflexmono overflow-x-hidden">
+      <Navbar />
       <section
         class="bg-cover bg-center w-screen h-screen items-center justify-center flex"
-        style={{ backgroundImage: `url(${background})` }}
+        style={{ maskImage: `linear-gradient(
+          to top,
+          rgba(255, 0, 0, 0) 0%,
+          rgb(69, 211, 22) 12.5%,
+          rgb(65, 22, 221) 87.5%,
+          rgba(20, 225, 222, 0) 100%
+              )`,
+           backgroundImage: `url(${background})` }}
       >
         <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
-        <Navbar />
         <h1 class="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
           Feel free and enjoy the beauty of paradise Island
         </h1>
       </section>
-      <div
-        class="px-4 py-8 flex flex-col gap-1 md:px-9"
-        style={{
-          maskImage: `linear-gradient(
-        to top,
-        rgba(255, 0, 0, 0) 0%,
-        rgb(69, 211, 22) 12.5%,
-        rgb(65, 22, 221) 87.5%,
-        rgba(20, 225, 222, 0) 100%
-            )`,
-        }}
-      >
-        <div class="flex items-center gap-1 flex-row mb-5">
+      
+      <div class="px-4 py-8 flex flex-col gap-1 md:px-9">
+        <div class="flex items-center gap-1 flex-row mb-5" >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
@@ -84,19 +81,11 @@ function Homecont () {
           </h1>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-3">
-          <button class="text-white px-4 md:px-5 py-2 md:py-3 bg-button-bg font-bold rounded-full">
-            Beach
-          </button>
-          <button class="text-white px-4 md:px-5 py-2 md:py-3 bg-button-bg font-bold rounded-full">
-            Mountain
-          </button>
-          <button class="text-white px-4 md:px-5 py-2 md:py-3 bg-button-bg font-bold rounded-full">
-            Club
-          </button>
+        <div class="flex flex-col md:flex-row gap-3" >
+          <Filterbtn/>
           <button class="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
             <span class="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
-              See All Destination
+              See All Destination 
             </span>
             <span class="absolute w-full h-full hidden bg-button-bg -left-32 md:-left-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
             <span class="absolute w-full h-full hidden bg-button-bg -right-32 md:-right-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
@@ -104,7 +93,15 @@ function Homecont () {
         </div>
 
         {/* card destination */}
-        <div className="flex flex-wrap justify-center p-4 gap-4">
+        <div className="flex flex-wrap justify-center p-4 gap-4 relative" style={{
+          maskImage: `linear-gradient(
+        to top,
+        rgba(255, 0, 0, 0) 0%,
+        rgb(69, 211, 22) 12.5%,
+        rgb(65, 22, 221) 87.5%,
+        rgba(20, 225, 222, 0) 100%
+            )`,
+        }}>
           {filteredWisata.length > 0 ? (
             filteredWisata.map((wisata) => (
               <Cardwisata key={wisata.id} id={wisata.id} wisata={wisata} />
