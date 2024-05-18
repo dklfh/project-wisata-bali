@@ -1,4 +1,3 @@
-import React from "react";
 import background from "../img/home-background.jpg";
 import uluwatu from "../img/uluwatu.jpg";
 import kuta from "../img/kuta.jpg";
@@ -6,8 +5,39 @@ import banner from "../img/banner.png";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import Cardwisata from "./cardwisata";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { getProduct } from "../services/productservices";
 
-const homecont = () => {
+function Homecont () {
+  const [wisataData, setWisataData] = useState([]);
+  const [filteredWisata, setFilteredWisata] = useState([]);
+  const [homecont, setProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchAllWisata = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800");
+        setWisataData(res.data);
+        setFilteredWisata(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchAllWisata();
+  }, []);
+
+  const handleSearch = (query) => {
+    const filteredData = wisataData.filter((wisata) =>
+      wisata.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredWisata(filteredData);
+  };
+
+  const handleClose = () => {
+    setFilteredWisata(wisataData); // Atur ulang filtered data menjadi data awal
+  };
   return (
     <div class="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <section
@@ -74,8 +104,14 @@ const homecont = () => {
         </div>
 
         {/* card destination */}
-        <div className="flex flex-auto items-center gap-4 p-4  h-auto">
-          <Cardwisata />
+        <div className="flex flex-wrap justify-center p-4 gap-4">
+          {filteredWisata.length > 0 ? (
+            filteredWisata.map((wisata) => (
+              <Cardwisata key={wisata.id} id={wisata.id} wisata={wisata} />
+            ))
+          ) : (
+            <p className="text-white">No matching results found.</p>
+          )}
         </div>
 
         <div class="flex flex-row gap-6 justify-center">
@@ -94,4 +130,4 @@ const homecont = () => {
   );
 };
 
-export default homecont;
+export default Homecont;

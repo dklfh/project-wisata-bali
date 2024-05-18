@@ -15,21 +15,23 @@ var db = mysql.createConnection({
 });
 
 app.get('/wisata/:id', (req, res) => {
-    const id = req.params.id;
-    const query = `SELECT * FROM wisata WHERE id = ${id}`;
-    connection.query(query, (error, results, fields) => {
-        if (error) {
-            console.error('Error querying MySQL:', error);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
-        if (results.length === 0) {
-            res.status(404).send('Data not found');
-            return;
-        }
-        res.json(results[0]);
-    });
+  const id = req.params.id;
+  const query = 'SELECT * FROM wisata WHERE id = ?';
+
+  db.query(query, [id], (error, results, fields) => {
+      if (error) {
+          console.error('Error querying MySQL:', error);
+          res.status(500).send('Internal Server Error');
+          return;
+      }
+      if (results.length === 0) {
+          res.status(404).send('Data not found');
+          return;
+      }
+      res.json(results[0]);
+  });
 });
+
 
   app.get("/", (req, res) => {
     const q = "SELECT*FROM wisata";

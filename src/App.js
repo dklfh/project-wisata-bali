@@ -9,6 +9,7 @@ import Datawisata from './pages/datawisata'
 import Tes from './pages/Tes'
 import Viewmore from './component/viewMore'
 
+
 const App = () => {
     return(
       <Router>

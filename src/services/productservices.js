@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const getDetailWisata = (id, callback) => {
-    axios 
-        .get(`http://localhost:3000/api/wisata/${id}`)
-        .then((res) => {
-            callback(res.data);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const API_URL = 'http://localhost:8800';
+
+export const getDetailWisata = async (id, callback) => {
+    try {
+        const response = await axios.get(`${API_URL}/wisata/${id}`);
+        callback(response.data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
 };

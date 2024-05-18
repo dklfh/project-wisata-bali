@@ -1,4 +1,5 @@
-  import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import AdminNav from "../component/adminNav";
 import SidebarAdmin from "../component/sidebarAdmin";
 import Cardwisata from "../component/cardwisata";
@@ -25,6 +26,40 @@ function DataWisata() {
     setShowDelete(false);
   };
 
+  const [wisataData, setWisataData] = useState([]);
+  const [filteredWisata, setFilteredWisata] = useState([]);
+
+  useEffect(() => {
+    const fetchAllWisata = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800");
+        setWisataData(res.data);
+        setFilteredWisata(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchAllWisata();
+  }, []);
+
+  const handleSearch = (query) => {
+    const filteredData = wisataData.filter((wisata) =>
+      wisata.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredWisata(filteredData);
+  };
+
+  const handleClose = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800");
+      setWisataData(res.data);
+      setFilteredWisata(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <section className="font-ibmflexmono flex flex-col bg-black-bg">
       <AdminNav title="Data Wisata" />
@@ -32,7 +67,6 @@ function DataWisata() {
       <div className="flex-1 flex flex-wrap">
         <SidebarAdmin />
         <div className="flex-1 p-8 w-full md:w-1/2 gap-10 flex-col">
-
           <div className="relative max-w-md w-full">
             <div className="absolute top-1 left-2 inline-flex items-center p-2">
               <i className="fas fa-search text-gray-400"></i>
@@ -78,8 +112,14 @@ function DataWisata() {
           <div className="flex flex-col mt-10">
             <h1 className="font-bold text-xl ml-5 text-white">Preview Data</h1>
 
-            <div className="flex flex-auto items-center gap-4 p-4 h-auto">
-              <Cardwisata />
+            <div className="flex flex-wrap justify-center p-4 gap-4">
+              {filteredWisata.length > 0 ? (
+                filteredWisata.map((wisata) => (
+                  <Cardwisata key={wisata.id} wisata={wisata} />
+                ))
+              ) : (
+                <p className="text-white">No matching results found.</p>
+              )}
             </div>
           </div>
         </div>
