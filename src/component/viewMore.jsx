@@ -4,6 +4,8 @@ import Starrating from "./starrating";
 import { Link, useParams } from 'react-router-dom';
 import { getDetailWisata } from '../services/productservices';
 import axios from 'axios';
+import Comment from './comment';
+
 
 
 function ViewMore () {
@@ -153,18 +155,9 @@ function ViewMore () {
                             <button  className="bg-button-bg text-white font-bold px-7 py-2 rounded-xl">Comment</button>
                         </form>
                     </div>
-                    <div  className="border border-white rounded-xl px-7 py-4 flex flex-col mt-7">
-                        <div  className="flex">
-                            <img src="" alt="foto profil"  className="w-5 h-5 rounded-full"/>
-                            <div  className="ml-3">
-                                <h1  className="font-bold">Adam Smith</h1>
-                                <h2  className="text-gray-400 text-sm">April 27,2023</h2>
-                            </div>
-                        </div>
-                        <h1  className="my-4">A great experience, i hope to stay here again.</h1>
-                        <div  className="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
-                        </div>
+                    
+                    <div>
+                        <Comment/>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,8 @@ import Admin from './pages/admin'
 import Datawisata from './pages/datawisata'
 import Tes from './pages/Tes'
 import Viewmore from './component/viewMore'
+import Comment from './component/comment'
+
 
 
 const App = () => {
@@ -21,6 +23,7 @@ const App = () => {
           <Route path='/Contact' element ={<Contact/>}></Route>
           <Route path='/Admin' element ={<Admin/>}></Route>
           <Route path='/DataWisata' element ={<Datawisata/>}></Route>
+          <Route path='/Comment' element ={<Comment/>}></Route>
           <Route path='/view/:id' element ={<Viewmore/>}></Route>
         </Routes>
       </Router>

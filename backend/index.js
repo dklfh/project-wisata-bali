@@ -61,6 +61,51 @@ app.get('/wisata/:id', (req, res) => {
     });
   });
 
+
+
+  app.get('/comment/:id', (req, res) => {
+    const id = req.params.id;
+    const query = 'SELECT * FROM comment WHERE id = ?';
+
+    db.query(query, [id], (error, results, fields) => {
+        if (error) {
+            console.error('Error querying MySQL:', error);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        if (results.length === 0) {
+            res.status(404).send('Data not found');
+            return;
+        }
+        res.json(results[0]);
+    });
+});
+
+
+app.get("/comment", (req, res) => {
+    const q = "SELECT * FROM comment"; // Ubah tulisan "SELECT*FROM" menjadi "SELECT * FROM"
+    db.query(q, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.json(err);
+        }
+        return res.json(data);
+    });
+});
+
+app.post("/comment", (req, res) => {
+    const q = "INSERT INTO comment(`comment`) VALUES (?)";
+
+    const values = [
+        req.body.comment,
+    ];
+
+    db.query(q, values, (err, data) => { // Menghapus array tambahan untuk values
+        if (err) return res.send(err);
+        return res.json(data);
+    });
+});
+
 app.listen(8800, ()=>{
     console.log("connect to bacckend")
 })
