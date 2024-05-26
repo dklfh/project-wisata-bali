@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Uluwatu from "../img/uluwatu.jpg";
 import Starrating from "./starrating";
 import { Link, useParams } from 'react-router-dom';
-import { getDetailWisata } from '../services/productservices';
+import { getDetailComment, getDetailWisata } from '../services/productservices';
 import axios from 'axios';
 import Comment from './comment';
+import Formhalaman from './formhalaman';
+
 
 
 
 function ViewMore () {
     const { id } = useParams();
     const [wisata, setWisata] = useState({})
+    const [comment, setComment] = useState({})
+
 
     useEffect(() => {
         getDetailWisata(id, (data) => {
@@ -22,6 +26,17 @@ function ViewMore () {
         });
     }, [id]);
 
+    useEffect(() => {
+        getDetailComment(id, (data) => {
+            try {
+                setComment(data);
+            } catch (err) {
+                console.log(err);
+            }
+        });
+    }, [id]);
+
+    console.log(comment);
     console.log(wisata);
     return (
     <div  className="bg-black-bg">
@@ -145,15 +160,9 @@ function ViewMore () {
                             <button  className="border border-white flex justify-between w-20 items-center px-3 text-sm ml-3">Rating<svg xmlns="http://www.w3.org/2000/svg" width="0.7em" height="0.7em" viewBox="0 0 2048 2048"><path fill="white" d="m1965 1101l-941 941l-941-941l90-90l787 787V0h128v1798l787-787z"/></svg></button>
                         </div>
                     </div>
-                    <div  className="flex mt-6 justify-between">
-                        <img src="" alt="foto profil"  className="w-10 h-10 rounded-full"/>
-                        <form action=""  className="flex flex-col items-end">
-                            <textarea id="comment"  className="p-3 rounded-xl text-black-bg" rows={4} style={{ resize: 'none' }} cols={50} placeholder="Tulis komentar Anda di sini..." required/>
-                            <div  className="flex my-3" id="star">
-                                <Starrating />
-                            </div>
-                            <button  className="bg-button-bg text-white font-bold px-7 py-2 rounded-xl">Comment</button>
-                        </form>
+
+                    <div>
+                        <Formhalaman/>
                     </div>
                     
                     <div>

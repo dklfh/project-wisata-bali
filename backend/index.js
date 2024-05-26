@@ -94,16 +94,18 @@ app.get("/comment", (req, res) => {
 });
 
 app.post("/comment", (req, res) => {
-    const q = "INSERT INTO comment(`comment`) VALUES (?)";
+    const q = "INSERT INTO `comment` (`id`, `comment`) VALUES (?)";
 
     const values = [
         req.body.comment,
     ];
 
-    db.query(q, values, (err, data) => { // Menghapus array tambahan untuk values
+    db.query(q, values, (err, data) => {
         if (err) return res.send(err);
         return res.json(data);
     });
+
+    console.log(req);
 });
 
 app.listen(8800, ()=>{
