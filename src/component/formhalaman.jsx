@@ -1,30 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Starrating from "./starrating";
 import { useParams } from "react-router-dom";
 
-function Formhalaman() {
+function Formhalaman({ onCommentAdded }) {
+  const { id } = useParams();
   const [comment, setComment] = useState({
+    id: id,
     comment: "",
   });
+
+  useEffect(() => {
+    setComment((prev) => ({ ...prev, id: id }));
+  }, [id]);
 
   const handleChange = (e) => {
     setComment((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const { id } = useParams();
-
-  // console.log(id)
-
   const handleSubmit = async (e) => {
-    // const { id } = useParams();
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8800/comment", id, comment); // Ganti URL sesuai dengan endpoint Anda
+      const response = await axios.post("http://localhost:8800/comment", {
+        id: comment.id,
+        comment: comment.comment
+      });
       console.log(response.data); // Output response dari server
+
+      // Panggil fungsi onCommentAdded setelah komentar berhasil ditambahkan
+      onCommentAdded(response.data);
+
       // Reset form setelah berhasil menambahkan komentar
-      setComment({ comment: "" });
-      console.log(id, comment)
+      setComment({ id: id, comment: "" });
     } catch (error) {
       console.error("Error:", error);
     }
@@ -33,7 +40,7 @@ function Formhalaman() {
   return (
     <div className="flex mt-6 justify-between">
       <img src="" alt="foto profil" className="w-10 h-10 rounded-full" />
-      <form onSubmit={handleSubmit} className="flex flex-col items-end">
+      <form className="flex flex-col items-end" onSubmit={handleSubmit}>
         <input
           className="p-3 rounded-xl text-black-bg"
           style={{ resize: "none" }}
@@ -56,4 +63,5 @@ function Formhalaman() {
     </div>
   );
 }
+
 export default Formhalaman;

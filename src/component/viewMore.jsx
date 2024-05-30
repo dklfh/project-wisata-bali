@@ -7,14 +7,10 @@ import axios from 'axios';
 import Comment from './comment';
 import Formhalaman from './formhalaman';
 
-
-
-
 function ViewMore () {
     const { id } = useParams();
     const [wisata, setWisata] = useState({})
-    const [comment, setComment] = useState({})
-
+    const [comment, setComment] = useState([]);
 
     useEffect(() => {
         getDetailWisata(id, (data) => {
@@ -35,6 +31,10 @@ function ViewMore () {
             }
         });
     }, [id]);
+
+    const handleCommentAdded = (newComment) => {
+        setComment((prevComments) => [...prevComments, newComment]);
+    };
 
     console.log(comment);
     console.log(wisata);
@@ -162,11 +162,11 @@ function ViewMore () {
                     </div>
 
                     <div>
-                        <Formhalaman/>
+                    <Formhalaman onCommentAdded={handleCommentAdded} />
                     </div>
                     
                     <div>
-                        <Comment/>
+                    <Comment comments={comment} />
                     </div>
                 </div>
             </div>

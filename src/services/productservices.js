@@ -14,8 +14,9 @@ export const getDetailWisata = async (id, callback) => {
 export const getDetailComment = async (id, callback) => {
     try {
         const response = await axios.get(`${API_URL}/comment/${id}`);
-        callback(response.data);
+        callback(response.data); // Assuming response.data is an array
     } catch (error) {
         console.error('Error fetching data:', error);
+        callback([]);
     }
 };

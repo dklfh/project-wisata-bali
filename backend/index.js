@@ -1,114 +1,126 @@
-import express, { query } from "express"
+import express from "express";
 import mysql from "mysql";
 import cors from "cors";
+import dotenv from "dotenv";
 
-const app = express()
+dotenv.config();
+
+const app = express();
 app.use(cors());
 app.use(express.json());
 
-
-var db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database:"datapariwisata"
+const db = mysql.createConnection({
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME || "datapariwisata"
 });
 
-app.get('/wisata/:id', (req, res) => {
-  const id = req.params.id;
-  const query = 'SELECT * FROM wisata WHERE id = ?';
-
-  db.query(query, [id], (error, results, fields) => {
-      if (error) {
-          console.error('Error querying MySQL:', error);
-          res.status(500).send('Internal Server Error');
-          return;
-      }
-      if (results.length === 0) {
-          res.status(404).send('Data not found');
-          return;
-      }
-      res.json(results[0]);
-  });
+db.connect((err) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err);
+        return;
+    }
+    console.log('Connected to MySQL');
 });
 
-
-  app.get("/", (req, res) => {
-    const q = "SELECT*FROM wisata";
-    db.query(q, (err, data) => {
-      if (err) {
-        console.log(err);
-        return res.json(err);
-      }
-      return res.json(data);
+// Helper function to use async/await with MySQL queries
+const query = (sql, args) => {
+    return new Promise((resolve, reject) => {
+        db.query(sql, args, (err, results) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(results);
+        });
     });
-  });
+};
 
-  app.post("/", (req, res) => {
-    const q = "INSERT INTO wisata(`title`, `desc`, `cover`,`lokasi`) VALUES (?)";
-  
-    const values = [
-      req.body.title,
-      req.body.desc,
-      req.body.cover,
-      req.body.lokasi,
-
-    ];
-  
-    db.query(q, [values], (err, data) => {
-      if (err) return res.send(err);
-      return res.json(data);
-    });
-  });
-
-
-
-  app.get('/comment/:id', (req, res) => {
+app.get('/wisata/:id', async (req, res) => {
     const id = req.params.id;
-    const query = 'SELECT * FROM comment WHERE id = ?';
+    const queryStr = 'SELECT * FROM wisata WHERE id = ?';
 
-    db.query(query, [id], (error, results, fields) => {
-        if (error) {
-            console.error('Error querying MySQL:', error);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
+    try {
+        const results = await query(queryStr, [id]);
         if (results.length === 0) {
-            res.status(404).send('Data not found');
-            return;
+            return res.status(404).send('Data not found');
         }
         res.json(results[0]);
-    });
+    } catch (error) {
+        console.error('Error querying MySQL:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-
-app.get("/comment", (req, res) => {
-    const q = "SELECT * FROM comment"; // Ubah tulisan "SELECT*FROM" menjadi "SELECT * FROM"
-    db.query(q, (err, data) => {
-        if (err) {
-            console.log(err);
-            return res.json(err);
-        }
-        return res.json(data);
-    });
+app.get("/", async (req, res) => {
+    const q = "SELECT * FROM wisata";
+    try {
+        const data = await query(q);
+        res.json(data);
+    } catch (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-app.post("/comment", (req, res) => {
-    const q = "INSERT INTO `comment` (`id`, `comment`) VALUES (?)";
-
+app.post("/", async (req, res) => {
+    const q = "INSERT INTO wisata(`title`, `desc`, `cover`, `lokasi`) VALUES (?)";
     const values = [
-        req.body.comment,
+        req.body.title,
+        req.body.desc,
+        req.body.cover,
+        req.body.lokasi
     ];
 
-    db.query(q, values, (err, data) => {
-        if (err) return res.send(err);
-        return res.json(data);
-    });
-
-    console.log(req);
+    try {
+        const data = await query(q, [values]);
+        res.json(data);
+    } catch (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-app.listen(8800, ()=>{
-    console.log("connect to bacckend")
-})
+app.get('/comment/:id', async (req, res) => {
+    const id = req.params.id;
+    const queryStr = 'SELECT * FROM comment WHERE id = ?';
 
+    try {
+        const results = await query(queryStr, [id]);
+        res.json(results);
+    } catch (error) {
+        console.error('Error querying MySQL:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.get("/comment", async (req, res) => {
+    const q = "SELECT * FROM comment";
+    try {
+        const data = await query(q);
+        res.json(data);
+    } catch (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.post("/comment", async (req, res) => {
+    const q = "INSERT INTO `comment` (`id`, `comment`) VALUES (?, ?)";
+    const values = [
+        req.body.id, // Assumes that `id` is provided in the request body
+        req.body.comment
+    ];
+
+    try {
+        const data = await query(q, values);
+        res.json(data);
+    } catch (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.listen(8800, () => {
+    console.log("Connected to backend on port 8800");
+});
