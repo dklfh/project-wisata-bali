@@ -8,8 +8,9 @@ import Cardwisata from "./cardwisata";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Filterbtn from "./filteredbutton";
+import { Link } from "react-router-dom";
 
-function Homecont () {
+function Homecont() {
   const [wisataData, setWisataData] = useState([]);
   const [filteredWisata, setFilteredWisata] = useState([]);
 
@@ -42,23 +43,25 @@ function Homecont () {
       <Navbar />
       <section
         class="bg-cover bg-center w-screen h-screen items-center justify-center flex"
-        style={{ maskImage: `linear-gradient(
+        style={{
+          maskImage: `linear-gradient(
           to top,
           rgba(255, 0, 0, 0) 0%,
           rgb(69, 211, 22) 12.5%,
           rgb(65, 22, 221) 87.5%,
           rgba(20, 225, 222, 0) 100%
               )`,
-           backgroundImage: `url(${background})` }}
+          backgroundImage: `url(${background})`,
+        }}
       >
         <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
         <h1 class="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
           Feel free and enjoy the beauty of paradise Island
         </h1>
       </section>
-      
+
       <div class="px-4 py-8 flex flex-col gap-1 md:px-9">
-        <div class="flex items-center gap-1 flex-row mb-5" >
+        <div class="flex items-center gap-1 flex-row mb-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
@@ -80,27 +83,30 @@ function Homecont () {
           </h1>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-3" >
-          <Filterbtn/>
-          <button class="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
+        <div class="flex flex-col md:flex-row gap-3">
+          <Filterbtn />
+          <Link to="/Destination" class="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
             <span class="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
-              See All Destination 
+              See All Destination
             </span>
             <span class="absolute w-full h-full hidden bg-button-bg -left-32 md:-left-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
             <span class="absolute w-full h-full hidden bg-button-bg -right-32 md:-right-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
-          </button>
+          </Link>
         </div>
 
         {/* card destination */}
-        <div className="flex flex-wrap justify-center p-4 gap-4 relative" style={{
-          maskImage: `linear-gradient(
+        <div
+          className="flex flex-wrap justify-center p-4 gap-4 relative"
+          style={{
+            maskImage: `linear-gradient(
         to top,
         rgba(255, 0, 0, 0) 0%,
         rgb(69, 211, 22) 12.5%,
         rgb(65, 22, 221) 87.5%,
         rgba(20, 225, 222, 0) 100%
             )`,
-        }}>
+          }}
+        >
           {filteredWisata.length > 0 ? (
             filteredWisata.map((wisata) => (
               <Cardwisata key={wisata.id} wisata={wisata} />
@@ -118,12 +124,144 @@ function Homecont () {
         </div>
 
         <div class="items-center justify-center  px-4 py-8 flex flex-col gap-4 md:px-12">
-          <img src={banner} alt="banner" />
+          <div
+            id="default-carousel"
+            class="relative w-full"
+            data-carousel="slide"
+          >
+            <div class="relative h-72 overflow-hidden rounded-lg">
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img
+                  src={banner}
+                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  alt="..."
+                />
+              </div>
+
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img
+                  src={banner}
+                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  alt="..."
+                />
+              </div>
+
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img
+                  src={banner}
+                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  alt="..."
+                />
+              </div>
+
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img
+                  src={banner}
+                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  alt="..."
+                />
+              </div>
+
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img
+                  src={banner}
+                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full"
+                aria-current="true"
+                aria-label="Slide 1"
+                data-carousel-slide-to="0"
+              ></button>
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full"
+                aria-current="false"
+                aria-label="Slide 2"
+                data-carousel-slide-to="1"
+              ></button>
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full"
+                aria-current="false"
+                aria-label="Slide 3"
+                data-carousel-slide-to="2"
+              ></button>
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full"
+                aria-current="false"
+                aria-label="Slide 4"
+                data-carousel-slide-to="3"
+              ></button>
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full"
+                aria-current="false"
+                aria-label="Slide 5"
+                data-carousel-slide-to="4"
+              ></button>
+            </div>
+            <button
+              type="button"
+              class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+              data-carousel-prev
+            >
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg
+                  class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 6 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 1 1 5l4 4"
+                  />
+                </svg>
+                <span class="sr-only">Previous</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+              data-carousel-next
+            >
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg
+                  class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 6 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 9 4-4-4-4"
+                  />
+                </svg>
+                <span class="sr-only">Next</span>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
       <Footer />
     </div>
   );
-};
+}
 
 export default Homecont;
