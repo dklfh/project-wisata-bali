@@ -1,7 +1,9 @@
 // Cardwisata.jsx
 import React from "react";
 import Uluwatu from "../img/uluwatu.jpg"
+import { Link } from "react-router-dom";
 function Cardwisata({ wisata }) {
+  const { id } = wisata;
   return (
     <div className="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg border-white max-w-md min-h-96 mb-10 py-25">
       <div className="flex flex-col gap-2 items-center wisata">
@@ -13,7 +15,7 @@ function Cardwisata({ wisata }) {
         <p className="text-xs text-white font-normal text-justify">
           {wisata.desc}
         </p>
-        <button className="p-2 rounded-lg bg-button-bg text-white">View More</button>
+        <Link to={`/view/${id}`} className="p-2 rounded-lg bg-button-bg text-white">View More</Link>
       </div>
     </div>
   );

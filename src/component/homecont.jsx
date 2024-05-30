@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 function Homecont() {
   const [wisataData, setWisataData] = useState([]);
   const [filteredWisata, setFilteredWisata] = useState([]);
+  const [homecont, setProduct] = useState([]);
 
   useEffect(() => {
     const fetchAllWisata = async () => {
@@ -109,7 +110,7 @@ function Homecont() {
         >
           {filteredWisata.length > 0 ? (
             filteredWisata.map((wisata) => (
-              <Cardwisata key={wisata.id} wisata={wisata} />
+              <Cardwisata key={wisata.id} id={wisata.id} wisata={wisata} />
             ))
           ) : (
             <p className="text-white">No matching results found.</p>
