@@ -44,18 +44,18 @@ function Formhalaman({ onCommentAdded }) {
   };
 
   return (
-    <div className="flex mt-6 justify-between">
-      <img src="" alt="foto profil" className="w-10 h-10 rounded-full" />
-      <form className="flex flex-col items-end" onSubmit={handleSubmit}>
-        <input
-          className="p-3 rounded-xl text-black-bg"
-          style={{ resize: "none" }}
-          type="text"
-          placeholder="comment comment"
-          name="comment"
-          value={comment.comment}
-          onChange={handleChange}
-        />
+    <div className="flex justify-between flex-col gap-y-5 sm:flex-row">
+      <form className="flex flex-col items-start w-full" onSubmit={handleSubmit}>
+      <input type="text" className="rounded-xl w-full p-3 text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5" placeholder="Nama..."/>
+      <textarea
+        className="p-3 w-full min-h-[100px] max-h-[300px] rounded-xl text-black bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        style={{ resize: "vertical" }}
+        type="text"
+        placeholder="Comment..."
+        name="comment"
+        value={comment.comment}
+        onChange={handleChange}
+      />
         {error && <p className="text-red-500">{error}</p>}
         <div className="flex my-3" id="star">
           <Starrating />

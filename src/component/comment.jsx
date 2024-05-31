@@ -22,7 +22,6 @@ function Comment() {
             {comments.map((comment, index) => (
                 <div key={index} className="border border-white rounded-xl px-7 py-4 flex flex-col mt-7">
                     <div className="flex">
-                        <img src="" alt="foto profil" className="w-5 h-5 rounded-full"/>
                         <div className="ml-3">
                             <h1 className="font-bold">{comment.user}</h1>
                             <h2 className="text-gray-400 text-sm">{comment.date}</h2>
