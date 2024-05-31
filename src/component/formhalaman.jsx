@@ -9,6 +9,7 @@ function Formhalaman({ onCommentAdded }) {
     id: id,
     comment: "",
   });
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setComment((prev) => ({ ...prev, id: id }));
@@ -16,10 +17,15 @@ function Formhalaman({ onCommentAdded }) {
 
   const handleChange = (e) => {
     setComment((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setError(""); // Reset error ketika pengguna mulai mengetik
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (comment.comment.trim() === "") {
+      setError("Comment cannot be empty");
+      return;
+    }
     try {
       const response = await axios.post("http://localhost:8800/comment", {
         id: comment.id,
@@ -50,6 +56,7 @@ function Formhalaman({ onCommentAdded }) {
           value={comment.comment}
           onChange={handleChange}
         />
+        {error && <p className="text-red-500">{error}</p>}
         <div className="flex my-3" id="star">
           <Starrating />
         </div>
