@@ -7,7 +7,7 @@ import Footer from "./footer";
 import Cardwisata from "./cardwisata";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Filterbtn from "./filteredbutton";
+import FilteredButton from "./filteredbutton";
 import { Link } from "react-router-dom";
 
 function Homecont() {
@@ -39,6 +39,12 @@ function Homecont() {
   const handleClose = () => {
     setFilteredWisata(wisataData); // Atur ulang filtered data menjadi data awal
   };
+
+  const handleFilter = (category) => {
+    const filteredData = wisataData.filter((wisata) => wisata.category === category);
+    setFilteredWisata(filteredData);
+  };
+
   return (
     <div class="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <Navbar />
@@ -85,7 +91,7 @@ function Homecont() {
         </div>
 
         <div class="flex flex-col md:flex-row gap-3">
-          <Filterbtn />
+        <FilteredButton onFilter={handleFilter}/> 
           <Link to="/Destination" class="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
             <span class="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
               See All Destination

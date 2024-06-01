@@ -10,6 +10,7 @@ function Formdata() {
     cover: "",
     slide1:"",
     lokasi:"",
+    category: "",
   });
 
   const [file, setFile] = useState({
@@ -29,7 +30,13 @@ function Formdata() {
 
   const handleClick = async (e) => {
     e.preventDefault();
-  
+
+    // Check if any of the fields are empty
+    if (!wisata.title || !wisata.desc || !wisata.cover || !wisata.lokasi || !wisata.category || !wisata.slide1 ) {
+      setError(true);
+      return;
+    }
+
     const formData = new FormData(); // Buat objek FormData
     formData.append('image', file); // Masukkan file ke FormData
   
@@ -112,6 +119,21 @@ function Formdata() {
                       onChange={handleChange}
                     />
                   </div>
+                  <div class="mt-2">
+                      <select
+                        id="pricingType"
+                        name="category"
+                        onChange={handleChange}
+                        class="mt-2 w-full h-10 border-2 border-button-bg  focus:outline-none focus:border-button-bg  text-black rounded px-2 md:px-3 py-0 md:py-1 tracking-wider"
+                      >
+                        <option value="Destination Category" selected="">
+                          Select Destination Category
+                        </option>
+                        <option value="Beach">Beach</option>
+                        <option value="Mountain">Mountain</option>
+                        <option value="Club">Club</option>
+                      </select>
+                    </div>
                   <div class="flex items-center justify-between mt-3">
                     <label class="text-base font-medium text-white">
                       Destination Picture
