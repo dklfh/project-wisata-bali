@@ -8,11 +8,13 @@ function Formdata() {
     title: "",
     desc: "",
     cover: "",
+    slide1:"",
     lokasi:"",
   });
 
   const [file, setFile] = useState({
     cover:"",
+    slide1:""
   });
   const [error,setError] = useState(false)
   const navigate = useNavigate();
@@ -66,7 +68,7 @@ function Formdata() {
             <form class="mt-5">
               <div class="space-y-4">
                 <div>
-                  <label class="text-base font-medium text-gray-900">
+                  <label class="text-base font-medium text-white">
                     Title of Destination
                   </label>
                   <div class="mt-2">
@@ -81,7 +83,7 @@ function Formdata() {
                 </div>
 
                 <div>
-                  <label class="text-base font-medium text-gray-900">
+                  <label class="text-base font-medium text-white">
                     Add Location
                   </label>
                   <div class="mt-2">
@@ -97,7 +99,7 @@ function Formdata() {
                 
                 <div>
                   <div class="flex items-center justify-between">
-                    <label class="text-base font-medium text-gray-900">
+                    <label class="text-base font-medium text-white">
                       Add Description
                     </label>
                   </div>
@@ -111,7 +113,7 @@ function Formdata() {
                     />
                   </div>
                   <div class="flex items-center justify-between mt-3">
-                    <label class="text-base font-medium text-gray-900">
+                    <label class="text-base font-medium text-white">
                       Destination Picture
                     </label>
                   </div>
@@ -121,6 +123,15 @@ function Formdata() {
                       type="file"
                       placeholder="wisata cover"
                       name="cover"
+                      onChange={handleFile}
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <input
+                      class="file-input w-full max-w-xs"
+                      type="file"
+                      placeholder="wisata slide1"
+                      name="slide1"
                       onChange={handleFile}
                     />
                   </div>

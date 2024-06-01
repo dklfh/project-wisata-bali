@@ -100,11 +100,12 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-    const q = "INSERT INTO wisata(title, `desc`, cover, lokasi) VALUES (?)";
+    const q = "INSERT INTO wisata(title, `desc`, cover, slide1, lokasi) VALUES (?)";
     const values = [
         req.body.title,
         req.body.desc,
         req.body.cover,
+        req.body.slide1,
         req.body.lokasi
     ];
 
