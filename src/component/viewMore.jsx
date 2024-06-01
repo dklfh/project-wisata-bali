@@ -11,6 +11,8 @@ function ViewMore () {
     const { id } = useParams();
     const [wisata, setWisata] = useState({})
     const [comment, setComment] = useState([]);
+    const {cover} = wisata;
+
 
     useEffect(() => {
         getDetailWisata(id, (data) => {
@@ -45,79 +47,63 @@ function ViewMore () {
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="white" d="m4 10l-.707.707L2.586 10l.707-.707zm17 8a1 1 0 1 1-2 0zM8.293 15.707l-5-5l1.414-1.414l5 5zm-5-6.414l5-5l1.414 1.414l-5 5zM4 9h10v2H4zm17 7v2h-2v-2zm-7-7a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5z"/></svg>
             </Link>
         </nav>
-        <div  className="flex px-7 py-3 gap-x-10 flex-col lg:flex-row">
-            <div  className="lg:w-1/2">
+        <div  className="flex px-7 py-3 gap-x-10">
+            <div  className="w-1/2">
                 <div  className="border border-white rounded-xl">
-                    <img src={Uluwatu} alt="Uluwatu"  className="w-full h-40 rounded-t-xl object-cover object-custom-position" style={{ objectPosition: "50% 75%" }}/>
+                    <img src={`http://localhost:8800/uploads/${cover}`} alt="Uluwatu"  className="w-full h-40 rounded-t-xl object-cover object-custom-position" style={{ objectPosition: "50% 75%" }}/>
                     <div  className="p-7 py-4">
                         <h1  className="text-white font-bold text-2xl">{wisata.title}</h1>
                         <h2  className="text-white text-md py-2">{wisata.lokasi}</h2>
                         <p  className="text-sm text-gray-400">{wisata.desc}</p>
                     </div>
                 </div>
-                <div className="border border-white rounded-xl my-10 px-7 py-4 flex flex-col sm:flex-row">
-                    <div className="text-white mr-10 mb-6 sm:mb-0">
-                        <h1 className="text-md">Rating</h1>
-                        <h2 className="font-bold text-4xl mt-3">8.5</h2>
-                        <div className="flex mt-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                <path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                <path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                <path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                <path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                <path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z" />
-                            </svg>
-                        </div>
-                        <h3 className="text-gray-300">4.000.000</h3>
+                <div  className="border border-white rounded-xl mt-10 px-7 py-4 flex">
+                    <div  className="text-white mr-10">
+                        <h1  className=" text-md">Rating</h1>
+                        <h2  className="font-bold text-4xl mt-3">8.5</h2>
+                        <div  className="flex mt-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#f6995c" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg></div>
+                        <h3  className="text-gray-300">4.000.000</h3>
                     </div>
-                    <div className="text-white flex-1">
-                        <div className="flex items-center mb-2">
-                            <h1 className="mr-3">5</h1>
-                            <div className="relative w-full">
-                                <div className="bg-gray-400 rounded-full h-3 w-full"></div>
-                                <div className="absolute top-0 left-0 bg-button-bg z-10 rounded-full h-3" style={{ width: "75%" }}></div>
+                    <div  className="text-white">
+                        <div  className="flex items-center">
+                            <h1  className="mr-3">5</h1>
+                            <div  className="relative"> 
+                                <div  className=" bg-gray-400 w-96 rounded-full h-3"></div>
+                                <div  className="absolute top-0 left-0 bg-button-bg z-10 w-72 rounded-full h-3"></div>
                             </div>
                         </div>
-                        <div className="flex items-center mb-2">
-                            <h1 className="mr-3">4</h1>
-                            <div className="relative w-full">
-                                <div className="bg-gray-400 rounded-full h-3 w-full"></div>
-                                <div className="absolute top-0 left-0 bg-button-bg z-10 rounded-full h-3" style={{ width: "50%" }}></div>
+                        <div  className="flex items-center">
+                            <h1  className="mr-3">4</h1>
+                            <div  className="relative"> 
+                                <div  className=" bg-gray-400 w-96 rounded-full h-3"></div>
+                                <div  className="absolute top-0 left-0 bg-button-bg z-10 w-52 rounded-full h-3"></div>
                             </div>
                         </div>
-                        <div className="flex items-center mb-2">
-                            <h1 className="mr-3">3</h1>
-                            <div className="relative w-full">
-                                <div className="bg-gray-400 rounded-full h-3 w-full"></div>
-                                <div className="absolute top-0 left-0 bg-button-bg z-10 rounded-full h-3" style={{ width: "40%" }}></div>
+                        <div  className="flex items-center">
+                            <h1  className="mr-3">3</h1>
+                            <div  className="relative"> 
+                                <div  className=" bg-gray-400 w-96 rounded-full h-3"></div>
+                                <div  className="absolute top-0 left-0 bg-button-bg z-10 w-40 rounded-full h-3"></div>
                             </div>
                         </div>
-                        <div className="flex items-center mb-2">
-                            <h1 className="mr-3">2</h1>
-                            <div className="relative w-full">
-                                <div className="bg-gray-400 rounded-full h-3 w-full"></div>
-                                <div className="absolute top-0 left-0 bg-button-bg z-10 rounded-full h-3" style={{ width: "20%" }}></div>
+                        <div  className="flex items-center">
+                            <h1  className="mr-3">2</h1>
+                            <div  className="relative"> 
+                                <div  className=" bg-gray-400 w-96 rounded-full h-3"></div>
+                                <div  className="absolute top-0 left-0 bg-button-bg z-10 w-20 rounded-full h-3"></div>
                             </div>
                         </div>
-                        <div className="flex items-center mb-2">
-                            <h1 className="mr-3">1</h1>
-                            <div className="relative w-full">
-                                <div className="bg-gray-400 rounded-full h-3 w-full"></div>
+                        <div  className="flex items-center">
+                            <h1  className="mr-3">1</h1>
+                            <div  className="relative"> 
+                                <div  className=" bg-gray-400 w-96 rounded-full h-3"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div  className="lg:w-1/2">
+            <div  className="w-1/2">
                 <div id="default-carousel"  className="relative w-full" data-carousel="slide">
                     
                     <div  className="relative h-72 overflow-hidden rounded-lg">
@@ -168,7 +154,14 @@ function ViewMore () {
                     </button>
                 </div>
 
-                <div  className="border border-white rounded-xl mt-10 px-4 sm:px-7 py-4 flex flex-col text-white">
+                <div  className="border border-white rounded-xl mt-10 px-7 py-4 flex flex-col text-white">
+                    <div  className="flex justify-between">
+                        <h1>30 Comment</h1>
+                        <div  className="flex">
+                            <h2  className="text-gray-400">Short by</h2>
+                            <button  className="border border-white flex justify-between w-20 items-center px-3 text-sm ml-3">Rating<svg xmlns="http://www.w3.org/2000/svg" width="0.7em" height="0.7em" viewBox="0 0 2048 2048"><path fill="white" d="m1965 1101l-941 941l-941-941l90-90l787 787V0h128v1798l787-787z"/></svg></button>
+                        </div>
+                    </div>
 
                     <div>
                     <Formhalaman onCommentAdded={handleCommentAdded} />
