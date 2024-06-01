@@ -2,19 +2,54 @@ import express from "express";
 import mysql from "mysql";
 import cors from "cors";
 import dotenv from "dotenv";
-
+import multer from "multer";
+import path from "path";
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('uploads'))
+
+// Konfigurasi Multer untuk menyimpan file gambar
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/') // Simpan file di dalam folder 'uploads'
+    },
+   filename: function (req, file, callback) {
+        callback(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
+
+// Endpoint untuk mengunggah gambar
+app.post("/upload", upload.single('image'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: "No file uploaded" });
+    }
+    const imagePath = req.file.path; // Path file yang diunggah
+    const imageName = req.file.filename; // Nama file yang diunggah
+    return res.status(200).json({ success: true, message: "File uploaded successfully", imagePath: imagePath, imageName: imageName });
+});
+
+// Menyajikan file statis dari folder 'uploads'
+app.use('/uploads', express.static('uploads'));
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST || "localhost",
     user: process.env.DB_USER || "root",
     password: process.env.DB_PASSWORD || "",
     database: process.env.DB_NAME || "datapariwisata"
+});
+
+app.get('/',(req, res) => {
+    const sql='select*from wisata';
+    db.query(sql,(err,result)=>{
+        if(err) return res.json("error");
+        return res.json(result)
+    })
 });
 
 db.connect((err) => {
@@ -65,7 +100,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-    const q = "INSERT INTO wisata(`title`, `desc`, `cover`, `lokasi`) VALUES (?)";
+    const q = "INSERT INTO wisata(title, `desc`, cover, lokasi) VALUES (?)";
     const values = [
         req.body.title,
         req.body.desc,
@@ -107,9 +142,9 @@ app.get("/comment", async (req, res) => {
 });
 
 app.post("/comment", async (req, res) => {
-    const q = "INSERT INTO `comment` (`id`, `comment`) VALUES (?, ?)";
+    const q = "INSERT INTO comment (id, comment) VALUES (?, ?)";
     const values = [
-        req.body.id, // Assumes that `id` is provided in the request body
+        req.body.id, // Assumes that id is provided in the request body
         req.body.comment
     ];
 
