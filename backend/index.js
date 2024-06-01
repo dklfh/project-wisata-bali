@@ -106,8 +106,8 @@ app.post("/", async (req, res) => {
         req.body.desc,
         req.body.cover,
         req.body.slide1,
-        req.body.lokasi,
-        req.body.category
+        req.body.category,
+        req.body.lokasi
     ];
 
     try {

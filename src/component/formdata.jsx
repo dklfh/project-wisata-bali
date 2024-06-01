@@ -8,14 +8,12 @@ function Formdata() {
     title: "",
     desc: "",
     cover: "",
-    slide1:"",
     lokasi:"",
     category: "",
   });
 
   const [file, setFile] = useState({
     cover:"",
-    slide1:""
   });
   const [error,setError] = useState(false)
   const navigate = useNavigate();
@@ -145,15 +143,6 @@ function Formdata() {
                       type="file"
                       placeholder="wisata cover"
                       name="cover"
-                      onChange={handleFile}
-                    />
-                  </div>
-                  <div class="mt-2">
-                    <input
-                      class="file-input w-full max-w-xs"
-                      type="file"
-                      placeholder="wisata slide1"
-                      name="slide1"
                       onChange={handleFile}
                     />
                   </div>
