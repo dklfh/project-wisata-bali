@@ -6,10 +6,14 @@ import Cardwisata from "../component/cardwisata";
 import Formdata from "../component/formdata";
 import Deletedata from "../component/deletedata";
 import Filteredbutton from "../component/filteredbutton"
+import Searchbar from "../component/searchbar";
 
 function DataWisata() {
   const [showForm, setShowForm] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [wisataData, setWisataData] = useState([]);
+  const [filteredWisata, setFilteredWisata] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
 
   const handleAddData = () => {
     setShowForm(true);
@@ -27,8 +31,27 @@ function DataWisata() {
     setShowDelete(false);
   };
 
-  const [wisataData, setWisataData] = useState([]);
-  const [filteredWisata, setFilteredWisata] = useState([]);
+  const handleConfirmDelete = async () => {
+    try {
+      await axios.post("http://localhost:8800/delete", { ids: selectedIds });
+      const updatedWisata = wisataData.filter(wisata => !selectedIds.includes(wisata.id));
+      setWisataData(updatedWisata);
+      setFilteredWisata(updatedWisata);
+      setSelectedIds([]);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setShowDelete(false);
+    }
+  };
+
+  const handleSelect = (id) => {
+    setSelectedIds(prevSelectedIds =>
+      prevSelectedIds.includes(id)
+        ? prevSelectedIds.filter(selectedId => selectedId !== id)
+        : [...prevSelectedIds, id]
+    );
+  };
 
   useEffect(() => {
     const fetchAllWisata = async () => {
@@ -78,17 +101,12 @@ function DataWisata() {
         <SidebarAdmin />
         <div className="flex-1 p-8 w-full md:w-1/2 gap-10 flex-col">
           <div className="relative max-w-md w-full">
-            <div className="absolute top-1 left-2 inline-flex items-center p-2">
-              <i className="fas fa-search text-gray-400"></i>
-            </div>
-            <input
-              className="w-full h-10 pl-10 pr-4 py-1 text-base placeholder-gray-500 border rounded-full focus:shadow-outline"
-              type="search"
-              placeholder="Search Data..."
-            />
+          <Searchbar onSearch={handleSearch} onClose={handleClose} />
           </div>
 
-          {showDelete && <Deletedata onClose={handleCloseDelete} />}
+          {showDelete && (
+            <Deletedata onClose={handleCloseDelete} onConfirm={handleConfirmDelete} />
+          )}
 
           <div className="flex flex-row gap-2 w-full justify-between">
             <div className="flex flex-row gap-3 mt-8 justify-end">
@@ -117,7 +135,13 @@ function DataWisata() {
             <div className="flex flex-wrap justify-center p-4 gap-4">
               {filteredWisata.length > 0 ? (
                 filteredWisata.map((wisata) => (
-                  <Cardwisata key={wisata.id} wisata={wisata} />
+                  <Cardwisata 
+                    key={wisata.id} 
+                    wisata={wisata} 
+                    isSelected={selectedIds.includes(wisata.id)}
+                    onSelect={handleSelect}
+                    showCheckbox={true}
+                  />
                 ))
               ) : (
                 <p className="text-white">No matching results found.</p>

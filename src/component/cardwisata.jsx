@@ -1,8 +1,7 @@
-// Cardwisata.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Cardwisata({ wisata }) {
+function Cardwisata({ wisata, isSelected, onSelect, showCheckbox }) {
   const { id, title, lokasi, desc, cover } = wisata;
   return (
     <div className="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg w-80 border-white max-w-md min-h-96 mb-10 py-25">
@@ -14,6 +13,14 @@ function Cardwisata({ wisata }) {
         <Link to={`/view/${id}`} className="p-2 rounded-lg bg-button-bg text-white">
           View More
         </Link>
+        {showCheckbox && (
+          <input 
+            type="checkbox"
+            checked={isSelected}
+            onChange={() => onSelect(id)}
+            className="mt-2"
+          />
+        )}
       </div>
     </div>
   );
