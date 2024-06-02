@@ -173,6 +173,23 @@ app.post("/comment", async (req, res) => {
     }
 });
 
+// Endpoint penghapusan data
+app.delete("/delete", async (req, res) => {
+    const ids = req.body.ids;
+    if (!ids || ids.length === 0) {
+        return res.status(400).json({ success: false, message: "No IDs provided" });
+    }
+
+    const queryStr = 'DELETE FROM wisata WHERE id IN (?)';
+
+    try {
+        await query(queryStr, [ids]);
+        res.json({ success: true, message: "Data deleted successfully" });
+    } catch (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 app.listen(8800, () => {
     console.log("Connected to backend on port 8800");

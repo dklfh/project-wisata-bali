@@ -33,7 +33,7 @@ function DataWisata() {
 
   const handleConfirmDelete = async () => {
     try {
-      await axios.post("http://localhost:8800/delete", { ids: selectedIds });
+      await axios.delete("http://localhost:8800/delete", { data: { ids: selectedIds } });
       const updatedWisata = wisataData.filter(wisata => !selectedIds.includes(wisata.id));
       setWisataData(updatedWisata);
       setFilteredWisata(updatedWisata);
@@ -101,7 +101,7 @@ function DataWisata() {
         <SidebarAdmin />
         <div className="flex-1 p-8 w-full md:w-1/2 gap-10 flex-col">
           <div className="relative max-w-md w-full">
-          <Searchbar onSearch={handleSearch} onClose={handleClose} />
+            <Searchbar onSearch={handleSearch} onClose={handleClose} />
           </div>
 
           {showDelete && (
@@ -135,9 +135,9 @@ function DataWisata() {
             <div className="flex flex-wrap justify-center p-4 gap-4">
               {filteredWisata.length > 0 ? (
                 filteredWisata.map((wisata) => (
-                  <Cardwisata 
-                    key={wisata.id} 
-                    wisata={wisata} 
+                  <Cardwisata
+                    key={wisata.id}
+                    wisata={wisata}
                     isSelected={selectedIds.includes(wisata.id)}
                     onSelect={handleSelect}
                     showCheckbox={true}
