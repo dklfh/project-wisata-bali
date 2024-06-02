@@ -100,7 +100,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-    const q = "INSERT INTO wisata(title, `desc`, cover, lokasi, category) VALUES (?)";
+    const q = "INSERT INTO wisata(title, desc, cover, lokasi, category) VALUES (?)";
     const values = [
         req.body.title,
         req.body.desc,
@@ -157,10 +157,11 @@ app.get("/comment", async (req, res) => {
 });
 
 app.post("/comment", async (req, res) => {
-    const q = "INSERT INTO comment (id, comment) VALUES (?, ?)";
+    const q = "INSERT INTO comment (id, comment, nama) VALUES (?, ?, ?)"; // Menambahkan kolom nama
     const values = [
-        req.body.id, // Assumes that id is provided in the request body
-        req.body.comment
+        req.body.id, // Asumsikan bahwa id disediakan dalam body permintaan
+        req.body.comment,
+        req.body.nama // Menambahkan data nama dari body permintaan
     ];
 
     try {
@@ -171,6 +172,7 @@ app.post("/comment", async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 app.listen(8800, () => {
     console.log("Connected to backend on port 8800");
