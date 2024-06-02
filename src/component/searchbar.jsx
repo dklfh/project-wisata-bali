@@ -55,7 +55,7 @@ function Searchbar({ onSearch, onClose }) {
 
         <button
           title="Close"
-          class="group cursor-pointer outline-none hover:rotate-90 duration-300"
+          class="group cursor-pointer outline-none "
           onClick={handleReset}
         >
           <svg

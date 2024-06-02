@@ -1,5 +1,4 @@
 import background from "../img/home-background.jpg";
-import uluwatu from "../img/uluwatu.jpg";
 import kuta from "../img/kuta.jpg";
 import banner from "../img/banner.png";
 import Navbar from "./navbar";
@@ -13,7 +12,6 @@ import { Link } from "react-router-dom";
 function Homecont() {
   const [wisataData, setWisataData] = useState([]);
   const [filteredWisata, setFilteredWisata] = useState([]);
-  const [homecont, setProduct] = useState([]);
 
   useEffect(() => {
     const fetchAllWisata = async () => {
@@ -29,27 +27,20 @@ function Homecont() {
     fetchAllWisata();
   }, []);
 
-  const handleSearch = (query) => {
-    const filteredData = wisataData.filter((wisata) =>
-      wisata.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredWisata(filteredData);
-  };
-
-  const handleClose = () => {
-    setFilteredWisata(wisataData); // Atur ulang filtered data menjadi data awal
-  };
-
   const handleFilter = (category) => {
     const filteredData = wisataData.filter((wisata) => wisata.category === category);
     setFilteredWisata(filteredData);
   };
 
+  const resetFilter = () => {
+    setFilteredWisata(wisataData);
+  };
+
   return (
-    <div class="bg-black-bg font-ibmflexmono overflow-x-hidden">
+    <div className="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <Navbar />
       <section
-        class="bg-cover bg-center w-screen h-screen items-center justify-center flex"
+        className="bg-cover bg-center w-screen h-screen items-center justify-center flex"
         style={{
           maskImage: `linear-gradient(
           to top,
@@ -61,14 +52,14 @@ function Homecont() {
           backgroundImage: `url(${background})`,
         }}
       >
-        <div class="absolute inset-0 bg-black opacity-30 h-screen"></div>
-        <h1 class="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
+        <div className="absolute inset-0 bg-black opacity-30 h-screen"></div>
+        <h1 className="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
           Feel free and enjoy the beauty of paradise Island
         </h1>
       </section>
 
-      <div class="px-4 py-8 flex flex-col gap-1 md:px-9">
-        <div class="flex items-center gap-1 flex-row mb-5">
+      <div className="px-4 py-8 flex flex-col gap-1 md:px-9">
+        <div className="flex items-center gap-1 flex-row mb-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
@@ -85,19 +76,19 @@ function Homecont() {
               fill="white"
             />
           </svg>
-          <h1 class="text-white font-semibold text-sm sm:text-lg">
+          <h1 className="text-white font-semibold text-sm sm:text-lg">
             See Destination In Bali
           </h1>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-3">
-        <FilteredButton onFilter={handleFilter}/> 
-          <Link to="/Destination" class="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
-            <span class="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
+        <div className="flex flex-col md:flex-row gap-3">
+          <FilteredButton onFilter={handleFilter} onResetFilter={resetFilter} />
+          <Link to="/Destination" className="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
+            <span className="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
               See All Destination
             </span>
-            <span class="absolute w-full h-full hidden bg-button-bg -left-32 md:-left-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
-            <span class="absolute w-full h-full hidden bg-button-bg -right-32 md:-right-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+            <span className="absolute w-full h-full hidden bg-button-bg -left-32 md:-left-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+            <span className="absolute w-full h-full hidden bg-button-bg -right-32 md:-right-64 top-0 md:inline -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
           </Link>
         </div>
 
@@ -123,93 +114,93 @@ function Homecont() {
           )}
         </div>
 
-        <div class="flex flex-row gap-6 justify-center">
-          <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
-          <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
-          <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
-          <img class="w-64 h-auto" src={kuta} alt="kuta"></img>
+        <div className="flex flex-row gap-6 justify-center">
+          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
+          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
+          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
+          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
         </div>
 
-        <div class="items-center justify-center  px-4 py-8 flex flex-col gap-4 md:px-12">
+        <div className="items-center justify-center  px-4 py-8 flex flex-col gap-4 md:px-12">
           <div
             id="default-carousel"
-            class="relative w-full"
+            className="relative w-full"
             data-carousel="slide"
           >
-            <div class="relative h-72 overflow-hidden rounded-lg">
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div className="relative h-72 overflow-hidden rounded-lg">
+              <div className="hidden duration-700 ease-in-out" data-carousel-item>
                 <img
                   src={banner}
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
                   alt="..."
                 />
               </div>
 
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <div className="hidden duration-700 ease-in-out" data-carousel-item>
                 <img
                   src={banner}
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
                   alt="..."
                 />
               </div>
 
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <div className="hidden duration-700 ease-in-out" data-carousel-item>
                 <img
                   src={banner}
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
                   alt="..."
                 />
               </div>
 
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <div className="hidden duration-700 ease-in-out" data-carousel-item>
                 <img
                   src={banner}
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
                   alt="..."
                 />
               </div>
 
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <div className="hidden duration-700 ease-in-out" data-carousel-item>
                 <img
                   src={banner}
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
+                  className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
                   alt="..."
                 />
               </div>
             </div>
 
-            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+            <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
               <button
                 type="button"
-                class="w-3 h-3 rounded-full"
+                className="w-3 h-3 rounded-full"
                 aria-current="true"
                 aria-label="Slide 1"
                 data-carousel-slide-to="0"
               ></button>
               <button
                 type="button"
-                class="w-3 h-3 rounded-full"
+                className="w-3 h-3 rounded-full"
                 aria-current="false"
                 aria-label="Slide 2"
                 data-carousel-slide-to="1"
               ></button>
               <button
                 type="button"
-                class="w-3 h-3 rounded-full"
+                className="w-3 h-3 rounded-full"
                 aria-current="false"
                 aria-label="Slide 3"
                 data-carousel-slide-to="2"
               ></button>
               <button
                 type="button"
-                class="w-3 h-3 rounded-full"
+                className="w-3 h-3 rounded-full"
                 aria-current="false"
                 aria-label="Slide 4"
                 data-carousel-slide-to="3"
               ></button>
               <button
                 type="button"
-                class="w-3 h-3 rounded-full"
+                className="w-3 h-3 rounded-full"
                 aria-current="false"
                 aria-label="Slide 5"
                 data-carousel-slide-to="4"
@@ -217,12 +208,12 @@ function Homecont() {
             </div>
             <button
               type="button"
-              class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+              className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
               data-carousel-prev
             >
-              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                 <svg
-                  class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                  className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -236,17 +227,17 @@ function Homecont() {
                     d="M5 1 1 5l4 4"
                   />
                 </svg>
-                <span class="sr-only">Previous</span>
+                <span className="sr-only">Previous</span>
               </span>
             </button>
             <button
               type="button"
-              class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+              className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
               data-carousel-next
             >
-              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                 <svg
-                  class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                  className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -260,7 +251,7 @@ function Homecont() {
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
-                <span class="sr-only">Next</span>
+                <span className="sr-only">Next</span>
               </span>
             </button>
           </div>
