@@ -5,6 +5,7 @@ import SidebarAdmin from "../component/sidebarAdmin";
 import Cardwisata from "../component/cardwisata";
 import Formdata from "../component/formdata";
 import Deletedata from "../component/deletedata";
+import Filteredbutton from "../component/filteredbutton"
 
 function DataWisata() {
   const [showForm, setShowForm] = useState(false);
@@ -60,6 +61,15 @@ function DataWisata() {
     }
   };
 
+  const handleFilter = (category) => {
+    const filteredData = wisataData.filter((wisata) => wisata.category === category);
+    setFilteredWisata(filteredData);
+  };
+
+  const resetFilter = () => {
+    setFilteredWisata(wisataData);
+  };
+
   return (
     <section className="font-ibmflexmono flex flex-col bg-black-bg">
       <AdminNav title="Data Wisata" />
@@ -96,15 +106,7 @@ function DataWisata() {
               </button>
             </div>
             <div className="flex flex-row gap-3 mt-8 justify-end">
-              <button className="text-white px-5 py-2 bg-button-bg font-bold rounded-full">
-                Beach
-              </button>
-              <button className="text-white px-5 py-2 bg-button-bg font-bold rounded-full">
-                Mountain
-              </button>
-              <button className="text-white px-5 py-2 bg-button-bg font-bold rounded-full">
-                Club
-              </button>
+              <Filteredbutton onFilter={handleFilter} onResetFilter={resetFilter} />
             </div>
           </div>
 

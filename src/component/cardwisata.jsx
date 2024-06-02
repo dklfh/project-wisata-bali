@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function Cardwisata({ wisata }) {
   const { id, title, lokasi, desc, cover } = wisata;
-
   return (
     <div className="wisata flex flex-col items-center gap-3 p-4 border-2 rounded-lg w-80 border-white max-w-md min-h-96 mb-10 py-25">
       <div className="flex flex-col gap-2 items-center wisata">
