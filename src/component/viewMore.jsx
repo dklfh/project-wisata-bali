@@ -11,6 +11,8 @@ function ViewMore () {
     const { id } = useParams();
     const [wisata, setWisata] = useState({})
     const [comment, setComment] = useState([]);
+    const {cover} = wisata;
+
 
     useEffect(() => {
         getDetailWisata(id, (data) => {
@@ -39,7 +41,7 @@ function ViewMore () {
     console.log(comment);
     console.log(wisata);
     return (
-    <div  className="bg-black-bg">
+        <div  className="bg-black-bg">
         <nav  className="px-7 py-5 w-full box-border z-10 bg-black-bg bg-opacity-90">
             <Link to="/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="white" d="m4 10l-.707.707L2.586 10l.707-.707zm17 8a1 1 0 1 1-2 0zM8.293 15.707l-5-5l1.414-1.414l5 5zm-5-6.414l5-5l1.414 1.414l-5 5zM4 9h10v2H4zm17 7v2h-2v-2zm-7-7a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5z"/></svg>
@@ -48,7 +50,7 @@ function ViewMore () {
         <div  className="flex px-7 py-3 gap-x-10 flex-col lg:flex-row">
             <div  className="lg:w-1/2">
                 <div  className="border border-white rounded-xl">
-                    <img src={Uluwatu} alt="Uluwatu"  className="w-full h-40 rounded-t-xl object-cover object-custom-position" style={{ objectPosition: "50% 75%" }}/>
+                <img src={`http://localhost:8800/uploads/${cover}`} alt="Uluwatu"  className="w-full h-auto rounded-t-xl object-cover object-custom-position" style={{ objectPosition: "50% 75%" }}/>
                     <div  className="p-7 py-4">
                         <h1  className="text-white font-bold text-2xl">{wisata.title}</h1>
                         <h2  className="text-white text-md py-2">{wisata.lokasi}</h2>
