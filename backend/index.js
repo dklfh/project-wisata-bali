@@ -100,7 +100,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-    const q = "INSERT INTO wisata(title, desc, cover, lokasi, category) VALUES (?)";
+    const q = "INSERT INTO wisata(title, `desc`, cover, lokasi,category) VALUES (?)";
     const values = [
         req.body.title,
         req.body.desc,
@@ -116,20 +116,6 @@ app.post("/", async (req, res) => {
         console.error('Error querying MySQL:', err);
         res.status(500).send('Internal Server Error');
     }
-});
-
-app.get('/data', (req, res) => {
-    const category = req.query.category;
-    const query = 'SELECT * FROM wisata WHERE category = ?';
-
-    db.query(query, [category], (err, results) => {
-        if (err) {
-            console.error('Error executing query:', err);
-            res.status(500).send('Server error');
-            return;
-        }
-        res.json(results);
-    });
 });
 
 app.get('/comment/:id', async (req, res) => {
