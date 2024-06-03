@@ -1,5 +1,7 @@
 import background from "../img/home-background.jpg";
 import kuta from "../img/kuta.jpg";
+import sanur from "../img/sanur.jpg";
+import buleleng from "../img/buleleng.jpg";
 import banner from "../img/banner.png";
 import Navbar from "./navbar";
 import Footer from "./footer";
@@ -28,7 +30,9 @@ function Homecont() {
   }, []);
 
   const handleFilter = (category) => {
-    const filteredData = wisataData.filter((wisata) => wisata.category === category);
+    const filteredData = wisataData.filter(
+      (wisata) => wisata.category === category
+    );
     setFilteredWisata(filteredData);
   };
 
@@ -83,7 +87,10 @@ function Homecont() {
 
         <div className="flex flex-col md:flex-row gap-3">
           <FilteredButton onFilter={handleFilter} onResetFilter={resetFilter} />
-          <Link to="/Destination" className="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3">
+          <Link
+            to="/Destination"
+            className="cursor-pointer font-semibold overflow-hidden relative z-100 border rounded-full group px-4 md:px-5 py-2 md:py-3"
+          >
             <span className="relative z-10 text-white group-hover:text-white text-sm md:text-xl duration-500">
               See All Destination
             </span>
@@ -114,11 +121,19 @@ function Homecont() {
           )}
         </div>
 
-        <div className="flex flex-row gap-6 justify-center">
-          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
-          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
-          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
-          <img className="w-64 h-auto" src={kuta} alt="kuta"></img>
+        <div className="image-container gap-3" style={{maskImage: `linear-gradient(
+          to right,
+          rgba(255, 0, 0, 0) 0%,
+          rgb(69, 211, 22) 12.5%,
+          rgb(65, 22, 221) 87.5%,
+          rgba(20, 225, 222, 0) 100%
+              )`}}>
+          <img src={kuta} alt="kuta" />
+          <img src={sanur} alt="kuta" />
+          <img src={buleleng} alt="kuta" />
+          <img src={kuta} alt="kuta" />
+          <img src={sanur} alt="kuta" />
+          <img src={buleleng} alt="kuta" />
         </div>
 
         <div className="items-center justify-center  px-4 py-8 flex flex-col gap-4 md:px-12">
@@ -128,7 +143,10 @@ function Homecont() {
             data-carousel="slide"
           >
             <div className="relative h-72 overflow-hidden rounded-lg">
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
+              <div
+                className="hidden duration-700 ease-in-out"
+                data-carousel-item
+              >
                 <img
                   src={banner}
                   className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
@@ -136,7 +154,10 @@ function Homecont() {
                 />
               </div>
 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
+              <div
+                className="hidden duration-700 ease-in-out"
+                data-carousel-item
+              >
                 <img
                   src={banner}
                   className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
@@ -144,7 +165,10 @@ function Homecont() {
                 />
               </div>
 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
+              <div
+                className="hidden duration-700 ease-in-out"
+                data-carousel-item
+              >
                 <img
                   src={banner}
                   className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
@@ -152,7 +176,10 @@ function Homecont() {
                 />
               </div>
 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
+              <div
+                className="hidden duration-700 ease-in-out"
+                data-carousel-item
+              >
                 <img
                   src={banner}
                   className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"
@@ -160,7 +187,10 @@ function Homecont() {
                 />
               </div>
 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
+              <div
+                className="hidden duration-700 ease-in-out"
+                data-carousel-item
+              >
                 <img
                   src={banner}
                   className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-72 object-cover"

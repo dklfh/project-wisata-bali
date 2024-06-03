@@ -7,4 +7,27 @@
     border-width: 1px;
     border-color: white;
   }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .image-container {
+    display: flex;
+    overflow: hidden;
+    
+  }
+  
+  .image-container img {
+    flex-shrink: 0;
+    width: 25%;
+    height: auto;
+    transition: all;
+    animation: scroll 10s linear infinite;
+  }
   
