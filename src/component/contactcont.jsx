@@ -1,12 +1,13 @@
 import Navbar from "./navbar";
 import background from "../img/contact-bg.jpg";
 import Footer from "./footer";
-
+import Scrollbutton from "./scrollbutton";
 function contactcont() {
   return (
     <section className="bg-black-bg font-ibmflexmono w-screen h-screen text-white">
       <div className="bg-black text-white">
         <Navbar />
+        <Scrollbutton/>
         <section
           class="bg-cover bg-center w-screen h-screen items-center justify-center flex relative"
           style={{

@@ -9,7 +9,7 @@ import Balisafari from "../img/balisafari.jpg";
 import Bedugul from "../img/bedugul.jpg";
 import Museum from "../img/museumpasifika.jpg";
 import Bhagawan from "../img/taman_bhagawan.jpg";
-
+import Scrollbutton from "./scrollbutton";
 function Destinationcont() {
   const [wisataData, setWisataData] = useState([]);
   const [filteredWisata, setFilteredWisata] = useState([]);
@@ -52,6 +52,7 @@ function Destinationcont() {
         style={{ backgroundImage: `url(${background})` }}>
         <div className="absolute inset-0 bg-black opacity-30 h-screen"></div>
         <Navbar />
+        <Scrollbutton/>
         <h1 className="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
           Feel free and enjoy the beauty of paradise Island
         </h1>

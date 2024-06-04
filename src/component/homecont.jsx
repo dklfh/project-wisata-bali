@@ -11,6 +11,8 @@ import axios from "axios";
 import FilteredButton from "./filteredbutton";
 import { Link } from "react-router-dom";
 import Homevideo from "../video/homevideo.mp4";
+import Scrollbutton from "./scrollbutton";
+import Testimonialsection from "./testimonials";
 
 function Homecont() {
   const [wisataData, setWisataData] = useState([]);
@@ -44,25 +46,7 @@ function Homecont() {
   return (
     <div className="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <Navbar />
-      <a
-        href="#"
-        className="fixed bottom-4 right-4 cursor-pointer bg-gray-800 px-3 py-2 rounded-md text-white tracking-wider shadow-xl animate-bounce hover:animate-none"
-      >
-        <svg
-          className="w-5 h-5"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M19.5 10.5 12 3m0 0-7.5 7.5M12 3v18"
-            strokeLinejoin="round"
-            strokeLinecap="round"
-          ></path>
-        </svg>
-      </a>
+      <Scrollbutton />
 
       {/* Home Section */}
       <section
@@ -193,49 +177,47 @@ function Homecont() {
             </p>
           </div>
 
-          <div className="relative mx-auto max-w-7xl z-10 grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-3">
-            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
+          <div className=" mx-auto max-w-7xl z-10 grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24 group">
               <img
-                src={
-                  "https://primabali.com/wp-content/uploads/2023/12/indonesia-bali-1024x683.webp"
-                }
-                alt="University of Southern California"
-                class="absolute inset-0 h-full w-full object-cover"
+                src="https://primabali.com/wp-content/uploads/2023/12/indonesia-bali-1024x683.webp"
+                alt="Cultural Diversity"
+                class="absolute inset-0 h-full w-full object-cover transition duration-300 ease-in-out group-hover:blur-sm"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-              <h3 class="z-10 mt-3 text-2xl font-bold text-white">
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 transition duration-300 ease-in-out group-hover:opacity-90"></div>
+              <h3 class="z-10 mt-3 text-2xl font-bold text-white opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">
                 Cultural diversity
               </h3>
             </article>
 
-            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
+            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24 group">
               <img
-                src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqnD4tIOv99PJrZlZay8WnhZXuypqlIeMvqw&s"
-                }
-                alt="University of Southern California"
-                class="absolute inset-0 h-full w-full object-cover"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqnD4tIOv99PJrZlZay8WnhZXuypqlIeMvqw&s"
+                alt="Culiner Diversity"
+                class="absolute inset-0 h-full w-full object-cover transition duration-300 ease-in-out group-hover:blur-sm"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-              <h3 class="z-10 mt-3 text-2xl font-bold text-white">
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 transition duration-300 ease-in-out group-hover:opacity-90"></div>
+              <h3 class="z-10 mt-3 text-2xl font-bold text-white opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">
                 Culiner Diversity
               </h3>
             </article>
-            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
+
+            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24 group">
               <img
-                src={
-                  "https://img.inews.co.id/media/600/files/inews_new/2022/12/28/ubud_bali.jpg"
-                }
-                alt="University of Southern California"
-                class="absolute inset-0 h-full w-full object-cover"
+                src="https://img.inews.co.id/media/600/files/inews_new/2022/12/28/ubud_bali.jpg"
+                alt="Diversity of tourist attractions"
+                class="absolute inset-0 h-full w-full object-cover transition duration-300 ease-in-out group-hover:blur-sm"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-              <h3 class="z-10 mt-3 text-2xl font-bold text-white">
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 transition duration-300 ease-in-out group-hover:opacity-90"></div>
+              <h3 class="z-10 mt-3 text-2xl font-bold text-white opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">
                 Diversity of tourist attractions
               </h3>
             </article>
           </div>
         </section>
+
+        {/* Testimonials section */}
+        <Testimonialsection />
 
         {/* Banner Corousel */}
         <div className="items-center justify-center  px-4 py-8 flex flex-col gap-4 md:px-12">

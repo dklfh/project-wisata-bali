@@ -12,6 +12,7 @@ import Sulih from "../img/sulih.png";
 import Devara from "../img/devara.png";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import Scrollbutton from "./scrollbutton";
 
 const aboutcont = () => {
   const Headercolor = {
@@ -21,6 +22,7 @@ const aboutcont = () => {
   return (
     <div class="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <Navbar />
+      <Scrollbutton/>
       <section
         class="bg-cover bg-center w-screen h-screen items-center justify-center flex relative"
         style={{
