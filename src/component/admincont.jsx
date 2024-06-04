@@ -20,14 +20,14 @@ function AdminCont() {
   }, []);
 
   return (
-    <section className="font-ibmflexmono flex flex-col  bg-black-bg *">
+    <section className="font-ibmflexmono flex flex-col bg-black-bg *">
       <AdminNav title="GogoBali Admin"/>
 
       <div className="flex-1 flex flex-wrap">
 
         <Sidebar />
 
-        <div className="flex-1 p-8 w-full md:w-1/2">
+        <div className="flex-1 p-8 w-full md:w-1/2 h-screen">
 
           <div className="relative max-w-md w-full">
             <div className="absolute top-1 left-2 inline-flex items-center p-2">
@@ -50,17 +50,10 @@ function AdminCont() {
               <tbody>
                 <tr className="hover:bg-grey-lighter">
                   <td className="py-2 px-4 border-b border-grey-light"><Cardadmin /></td>
-                  <td className="py-2 px-4 border-b border-grey-light">Location Data</td>
                 </tr>
                 {/* Sisipkan baris tabel tambahan di sini */}
               </tbody>
             </table>
-
-            <div className="text-right mt-4">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded">
-                Edit Data
-              </button>
-            </div>
           </div>
 
         </div>

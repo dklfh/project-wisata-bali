@@ -104,7 +104,7 @@ function ViewMore() {
                     <div className="border border-white rounded-xl">
                         <img src={`http://localhost:8800/uploads/${cover}`} alt="Uluwatu" className="w-full h-auto rounded-t-xl object-cover object-custom-position" style={{ objectPosition: "50% 75%" }} />
                         <div className="p-7 py-4">
-                            <h1 className="text-white font-bold text-2xl">{wisata.title}</h1>
+                            <h1 className="text-white font-bold text-2xl">{wisata.title} {wisata.category}</h1>
                             <h2 className="text-white text-md py-2">{wisata.lokasi}</h2>
                             <p className="text-sm text-gray-400">{wisata.desc}</p>
                         </div>
