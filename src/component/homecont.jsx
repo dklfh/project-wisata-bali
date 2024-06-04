@@ -10,6 +10,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FilteredButton from "./filteredbutton";
 import { Link } from "react-router-dom";
+import Homevideo from "../video/homevideo.mp4";
 
 function Homecont() {
   const [wisataData, setWisataData] = useState([]);
@@ -43,25 +44,57 @@ function Homecont() {
   return (
     <div className="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <Navbar />
+      <a
+        href="#"
+        className="fixed bottom-4 right-4 cursor-pointer bg-gray-800 px-3 py-2 rounded-md text-white tracking-wider shadow-xl animate-bounce hover:animate-none"
+      >
+        <svg
+          className="w-5 h-5"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19.5 10.5 12 3m0 0-7.5 7.5M12 3v18"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          ></path>
+        </svg>
+      </a>
+
+      {/* Home Section */}
       <section
-        className="bg-cover bg-center w-screen h-screen items-center justify-center flex"
+        class="relative h-screen flex flex-col items-center justify-center text-center text-white "
         style={{
           maskImage: `linear-gradient(
-          to top,
-          rgba(255, 0, 0, 0) 0%,
-          rgb(69, 211, 22) 12.5%,
-          rgb(65, 22, 221) 87.5%,
-          rgba(20, 225, 222, 0) 100%
-              )`,
+        to top,
+        rgba(255, 0, 0, 0) 0%,
+        rgb(69, 211, 22) 12.5%,
+        rgb(65, 22, 221) 87.5%,
+        rgba(20, 225, 222, 0) 100%
+            )`,
           backgroundImage: `url(${background})`,
         }}
       >
+        <div class="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
+          <video
+            class="absolute object-cover"
+            src={Homevideo}
+            autoPlay
+            muted
+          ></video>
+        </div>
+        <div class="video-content space-y-2 z-10">
+          <h1 className="text-white  w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
+            Feel free and enjoy the beauty of paradise Island
+          </h1>
+        </div>
         <div className="absolute inset-0 bg-black opacity-30 h-screen"></div>
-        <h1 className="text-white absolute w-64 text-center font-bold text-md font-ibmflexmono sm:text-lg md:text-3xl md:w-128 lg:w-160 lg:text-4xl">
-          Feel free and enjoy the beauty of paradise Island
-        </h1>
       </section>
 
+      {/* Data wisata */}
       <div className="px-4 py-8 flex flex-col gap-1 md:px-9">
         <div className="flex items-center gap-1 flex-row mb-5">
           <svg
@@ -121,13 +154,19 @@ function Homecont() {
           )}
         </div>
 
-        <div className="image-container gap-3" style={{maskImage: `linear-gradient(
+        {/* Img Slider */}
+        <div
+          className="image-container gap-3"
+          style={{
+            maskImage: `linear-gradient(
           to right,
           rgba(255, 0, 0, 0) 0%,
           rgb(69, 211, 22) 12.5%,
           rgb(65, 22, 221) 87.5%,
           rgba(20, 225, 222, 0) 100%
-              )`}}>
+              )`,
+          }}
+        >
           <img src={kuta} alt="kuta" />
           <img src={sanur} alt="kuta" />
           <img src={buleleng} alt="kuta" />
@@ -136,6 +175,69 @@ function Homecont() {
           <img src={buleleng} alt="kuta" />
         </div>
 
+        {/* Featurers Experience Section */}
+        <section
+          id="features"
+          className="relative block px-6 py-10 md:py-20 md:px-10 border-t border-b border-neutral-900 bg-neutral-900/30"
+        >
+          <div className="relative mx-auto max-w-5xl text-center">
+            <span className="text-gray-400 my-3 flex items-center justify-center font-medium uppercase tracking-wider">
+              Featured Experiences
+            </span>
+            <h2 className="block w-full bg-gradient-to-b from-white to-gray-400 bg-clip-text font-bold text-transparent text-3xl sm:text-4xl">
+              Why do you have to come to Bali
+            </h2>
+            <p className="mx-auto my-4 w-full max-w-xl bg-transparent text-center font-medium leading-relaxed tracking-wide text-gray-400">
+              Bali is not only about tourist destinations, but also about unique
+              experiences that you can enjoy. Like the example below
+            </p>
+          </div>
+
+          <div className="relative mx-auto max-w-7xl z-10 grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
+              <img
+                src={
+                  "https://primabali.com/wp-content/uploads/2023/12/indonesia-bali-1024x683.webp"
+                }
+                alt="University of Southern California"
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+              <h3 class="z-10 mt-3 text-2xl font-bold text-white">
+                Cultural diversity
+              </h3>
+            </article>
+
+            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
+              <img
+                src={
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqnD4tIOv99PJrZlZay8WnhZXuypqlIeMvqw&s"
+                }
+                alt="University of Southern California"
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+              <h3 class="z-10 mt-3 text-2xl font-bold text-white">
+                Culiner Diversity
+              </h3>
+            </article>
+            <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
+              <img
+                src={
+                  "https://img.inews.co.id/media/600/files/inews_new/2022/12/28/ubud_bali.jpg"
+                }
+                alt="University of Southern California"
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+              <h3 class="z-10 mt-3 text-2xl font-bold text-white">
+                Diversity of tourist attractions
+              </h3>
+            </article>
+          </div>
+        </section>
+
+        {/* Banner Corousel */}
         <div className="items-center justify-center  px-4 py-8 flex flex-col gap-4 md:px-12">
           <div
             id="default-carousel"

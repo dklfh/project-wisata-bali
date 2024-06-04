@@ -2,6 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*{
+  scroll-behavior: smooth;
+}
 .bg-button-selected {
     background: transparent; /* Contoh warna */
     border-width: 1px;
@@ -30,4 +33,21 @@
     transition: all;
     animation: scroll 10s linear infinite;
   }
-  
+  .video-docker video {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-docker::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+

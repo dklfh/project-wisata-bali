@@ -1,3 +1,4 @@
+/* Navbar.jsx */
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../img/logo goBali.png';
@@ -43,13 +44,13 @@ function Navbar() {
     };
 
     return (
-        <nav className={`px-7 py-5 fixed w-full top-0 box-border z-10 ${isScrolled ? 'bg-black-bg' : 'bg-transparent'} transition-all duration-300 bg-opacity-90`}>
-            <div className="flex justify-between items-center">
-                <img src={logo} alt="logo" className="w-28 sm:w-40"/>
+        <nav className={`px-7 py-5 fixed w-full top-0 box-border z-10 transition-all duration-300 bg-opacity-90 ${isScrolled ? 'bg-black-bg transform translate-y-1' : 'bg-transparent transform translate-y-0'}`}>
+            <div className="flex justify-between items-center transition-all duration-300 ${isScrolled ? 'translate-y-1 scale-90' : 'translate-y-0 scale-100'}">
+                <img src={logo} alt="logo" className={`w-28 sm:w-40 transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`} />
                 <div className="md:hidden">
                     <button id="menu-toggle" className="text-white" onClick={handleMenuToggle}>
                         <svg className="w-8 h-8 z-50 md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18"></path>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12h18M3 6h18M3 18h18"></path>
                         </svg>
                     </button>
                 </div>
