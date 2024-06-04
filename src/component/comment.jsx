@@ -27,8 +27,8 @@ function Comment() {
                             <h2 className="text-gray-400 text-sm">{comment.date}</h2>
                         </div>
                     </div>
-                    <h1 className="my-4">{comment.comment}</h1>
                     <h1 className="my-4">{comment.nama}</h1>
+                    <h1 className="my-4">{comment.comment}</h1>
                     <div className="flex">
                         {[...Array(5)].map((star, i) => (
                             <svg key={i} xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">

@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/') // Simpan file di dalam folder 'uploads'
     },
-   filename: function (req, file, callback) {
+    filename: function (req, file, callback) {
         callback(null, file.originalname);
     }
 });
@@ -44,10 +44,10 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME || "datapariwisata"
 });
 
-app.get('/',(req, res) => {
-    const sql='select*from wisata';
-    db.query(sql,(err,result)=>{
-        if(err) return res.json("error");
+app.get('/', (req, res) => {
+    const sql = 'select*from wisata';
+    db.query(sql, (err, result) => {
+        if (err) return res.json("error");
         return res.json(result)
     })
 });
@@ -143,11 +143,12 @@ app.get("/comment", async (req, res) => {
 });
 
 app.post("/comment", async (req, res) => {
-    const q = "INSERT INTO comment (id, comment, nama) VALUES (?, ?, ?)"; // Menambahkan kolom nama
+    const q = "INSERT INTO comment (id, comment, nama, rating) VALUES (?, ?, ?, ?)"; // Menambahkan kolom nama
     const values = [
         req.body.id, // Asumsikan bahwa id disediakan dalam body permintaan
         req.body.comment,
-        req.body.nama // Menambahkan data nama dari body permintaan
+        req.body.nama,
+        req.body.rating // Menambahkan data nama dari body permintaan
     ];
 
     try {
@@ -175,6 +176,18 @@ app.delete("/delete", async (req, res) => {
         console.error('Error querying MySQL:', err);
         res.status(500).send('Internal Server Error');
     }
+});
+
+app.get('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    db.query('SELECT rating FROM comment WHERE id = ?', [id], (err, results) => {
+        if (err) {
+            console.error('Error fetching ratings:', err);
+            res.status(500).send('Server error');
+            return;
+        }
+        res.json(results);
+    });
 });
 
 app.listen(8800, () => {

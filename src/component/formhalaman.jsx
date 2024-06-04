@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Starrating from "./starrating";
+import StarRating from "./starrating"; // Pastikan nama impor sesuai dengan komponen yang diekspor
 import { useParams } from "react-router-dom";
 
 function Formhalaman({ onCommentAdded }) {
@@ -8,9 +8,11 @@ function Formhalaman({ onCommentAdded }) {
   const [comment, setComment] = useState({
     id: id,
     comment: "",
-    nama: "" // Tambah state untuk menyimpan nama
+    nama: "",
+    rating: "" // Tambah state untuk menyimpan nilai rating
   });
   const [error, setError] = useState("");
+  const [ratingReset, setRatingReset] = useState(null); // Callback untuk reset rating
 
   useEffect(() => {
     setComment((prev) => ({ ...prev, id: id }));
@@ -22,30 +24,37 @@ function Formhalaman({ onCommentAdded }) {
     setError(""); // Reset error ketika pengguna mulai mengetik
   };
 
+  const handleRatingChange = (rating) => {
+    setComment((prev) => ({ ...prev, rating: rating }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (comment.comment.trim() === "" || comment.nama.trim() === "") {
-      setError("Nama dan komentar tidak boleh kosong");
+    if (comment.comment.trim() === "" || comment.nama.trim() === "" || comment.rating === "") {
+      setError("Nama, Komentar, dan Rating tidak boleh kosong");
       return;
     }
     try {
       const response = await axios.post("http://localhost:8800/comment", {
         id: comment.id,
         comment: comment.comment,
-        nama: comment.nama // Sertakan nilai nama
+        nama: comment.nama,
+        rating: comment.rating // Sertakan nilai rating
       });
       console.log(response.data); // Output response dari server
-  
+
       // Panggil fungsi onCommentAdded setelah komentar berhasil ditambahkan
       onCommentAdded(response.data);
-  
+
       // Reset form setelah berhasil menambahkan komentar
-      setComment({ id: id, comment: "", nama: "" });
+      setComment({ id: id, comment: "", nama: "", rating: "" });
+      if (ratingReset) {
+        ratingReset(); // Reset rating
+      }
     } catch (error) {
       console.error("Error:", error);
     }
   };
-  
 
   return (
     <div className="flex justify-between flex-col gap-y-5 sm:flex-row">
@@ -67,9 +76,8 @@ function Formhalaman({ onCommentAdded }) {
           value={comment.comment}
           onChange={handleChange}
         />
-        {error && <p className="text-red-500">{error}</p>}
         <div className="flex my-3" id="star">
-          <Starrating />
+          <StarRating onRatingChange={handleRatingChange} onRatingReset={setRatingReset} />
         </div>
         <button
           type="submit"
@@ -77,6 +85,7 @@ function Formhalaman({ onCommentAdded }) {
         >
           Add Data
         </button>
+        {error && <p className="text-red-500">{error}</p>}
       </form>
     </div>
   );
