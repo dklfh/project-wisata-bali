@@ -7,6 +7,8 @@ import Formdata from "../component/formdata";
 import Deletedata from "../component/deletedata";
 import Filteredbutton from "../component/filteredbutton"
 import Searchbar from "../component/searchbar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function DataWisata() {
   const [showForm, setShowForm] = useState(false);
@@ -33,13 +35,22 @@ function DataWisata() {
 
   const handleConfirmDelete = async () => {
     try {
-      await axios.delete("http://localhost:8800/delete", { data: { ids: selectedIds } });
+      const res = await axios.delete("http://localhost:8800/delete", { data: { ids: selectedIds } });
+      const { deletedCount } = res.data;
+  
       const updatedWisata = wisataData.filter(wisata => !selectedIds.includes(wisata.id));
       setWisataData(updatedWisata);
       setFilteredWisata(updatedWisata);
       setSelectedIds([]);
+  
+      if (deletedCount > 0) {
+        toast.success(`Berhasil menghapus ${deletedCount} data`);
+      } else {
+        toast.warn("Tidak ada data yang dihapus");
+      }
     } catch (err) {
       console.log(err);
+      toast.error("Gagal menghapus data");
     } finally {
       setShowDelete(false);
     }
@@ -150,6 +161,7 @@ function DataWisata() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 }

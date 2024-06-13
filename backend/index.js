@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import multer from "multer";
 import path from "path";
+import fs from "fs"; // Import modul fs
 
 dotenv.config();
 
@@ -160,19 +161,50 @@ app.post("/comment", async (req, res) => {
     }
 });
 
-// Endpoint penghapusan data
+// Endpoint penghapusan data dan file yang diunggah
 app.delete("/delete", async (req, res) => {
     const ids = req.body.ids;
     if (!ids || ids.length === 0) {
         return res.status(400).json({ success: false, message: "No IDs provided" });
     }
 
-    const queryStr = 'DELETE FROM wisata WHERE id IN (?)';
+    const deleteWisataQuery = 'DELETE FROM wisata WHERE id IN (?)';
+    const deleteCommentQuery = 'DELETE FROM comment WHERE id IN (?)';
+    const selectFilesQuery = 'SELECT cover FROM wisata WHERE id IN (?)';
 
     try {
-        await query(queryStr, [ids]);
-        res.json({ success: true, message: "Data deleted successfully" });
+        // Mulai transaksi
+        await query('START TRANSACTION');
+
+        // Ambil nama file yang akan dihapus
+        const filesToDelete = await query(selectFilesQuery, [ids]);
+
+        // Hapus data dari tabel comment
+        const deleteCommentsResult = await query(deleteCommentQuery, [ids]);
+
+        // Hapus data dari tabel wisata
+        const deleteWisataResult = await query(deleteWisataQuery, [ids]);
+
+        // Commit transaksi
+        await query('COMMIT');
+
+        // Hapus file yang terkait
+        filesToDelete.forEach(file => {
+            const filePath = path.join('uploads', file.cover);
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.error('Error deleting file:', filePath, err);
+                }
+            });
+        });
+
+        // Mengembalikan jumlah data yang dihapus
+        const deletedCount = deleteWisataResult.affectedRows;
+
+        res.json({ success: true, message: "Data and related files deleted successfully", deletedCount });
     } catch (err) {
+        // Rollback transaksi jika ada kesalahan
+        await query('ROLLBACK');
         console.error('Error querying MySQL:', err);
         res.status(500).send('Internal Server Error');
     }
