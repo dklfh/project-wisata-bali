@@ -43,6 +43,32 @@ function Homecont() {
     setFilteredWisata(wisataData);
   };
 
+  useEffect(() => {
+    const sortWisataByRating = async () => {
+      const promises = wisataData.map(async (wisata) => {
+        try {
+          const response = await axios.get(`http://localhost:8800/comments/${wisata.id}`);
+          const ratings = response.data.map(comment => comment.rating);
+          const averageRating = ratings.length > 0 
+            ? (ratings.reduce((acc, rating) => acc + rating, 0) / ratings.length).toFixed(1)
+            : 0;
+          return { ...wisata, averageRating: parseFloat(averageRating) };
+        } catch (error) {
+          console.error('Error fetching ratings:', error);
+          return { ...wisata, averageRating: 0 };
+        }
+      });
+
+      const updatedWisataList = await Promise.all(promises);
+      const sortedList = updatedWisataList.sort((a, b) => b.averageRating - a.averageRating);
+      setFilteredWisata(sortedList);
+    };
+
+    if (wisataData.length > 0) {
+      sortWisataByRating();
+    }
+  }, [wisataData]);
+
   return (
     <div className="bg-black-bg font-ibmflexmono overflow-x-hidden">
       <Navbar />

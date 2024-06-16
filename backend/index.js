@@ -222,6 +222,50 @@ app.get('/comments/:id', (req, res) => {
     });
 });
 
+app.post("/slider", async (req, res) => {
+    const q = "INSERT INTO slider(id_slider, img_1, img_2, img_3, img_4, img_5) VALUES (?, ?, ?, ?, ?, ?)";
+    const values = [
+        req.body.id_slider,
+        req.body.img_1,
+        req.body.img_2,
+        req.body.img_3,
+        req.body.img_4,
+        req.body.img_5
+    ];
+
+    try {
+        const data = await query(q, [values]);
+        res.json(data);
+    } catch (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.get("/slider", async (req, res) => {
+    const q = "SELECT * FROM slider";
+    try {
+        const data = await query(q);
+        res.json(data);
+    } catch (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.get('/slider/:id', async (req, res) => {
+    const id = req.params.id;
+    const queryStr = 'SELECT * FROM slider WHERE id_slider = ?';
+
+    try {
+        const results = await query(queryStr, [id]);
+        res.json(results);
+    } catch (error) {
+        console.error('Error querying MySQL:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 app.listen(8800, () => {
     console.log("Connected to backend on port 8800");
 });
